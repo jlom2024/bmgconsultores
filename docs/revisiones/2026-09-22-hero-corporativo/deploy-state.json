@@ -1,0 +1,124 @@
+{
+  "created": "20260922-194130",
+  "host": "ftp.bmgconsultoresperu.com",
+  "base": "https://www.bmgconsultoresperu.com",
+  "backup": "\\\\192.168.18.10\\ComparteYA\\Empresas\\BMG Consultores\\docs\\revisiones\\2026-09-22-hero-corporativo\\produccion-antes-20260922-194130.zip",
+  "inventory": [
+    {
+      "path": "robots.txt",
+      "size": 233,
+      "sha256": "f9f2c16c0cbeeee5fe680b1fa2aca7d57eaee071476ba378e213f2a26c7a72a2",
+      "old_sha256": "f9f2c16c0cbeeee5fe680b1fa2aca7d57eaee071476ba378e213f2a26c7a72a2",
+      "changed": false
+    },
+    {
+      "path": "sitemap-routes.json",
+      "size": 282,
+      "sha256": "99c833bcbe737fccfbdb92755d5a3f1e4a5112e2a2ab0cc93c480429f7bdb45d",
+      "old_sha256": "cc5d8ae081a56943cf8d29309bc81741e310e3df3f33487846163d8e87574e6e",
+      "changed": true
+    },
+    {
+      "path": "sitemap.xml",
+      "size": 844,
+      "sha256": "d5ef753b742f8d6e91874b851e1601b1c1d60498e117120cf8cefe0c5b4bfeef",
+      "old_sha256": "d5ef753b742f8d6e91874b851e1601b1c1d60498e117120cf8cefe0c5b4bfeef",
+      "changed": false
+    },
+    {
+      "path": "assets/Index-D1FUZbh7.js",
+      "size": 462550,
+      "sha256": "72f10f0125c0a547151521a798f823427102b5944484d0aed3120fb2ac087892",
+      "old_sha256": null,
+      "changed": true
+    },
+    {
+      "path": "assets/index-DzGD5xVO.css",
+      "size": 175803,
+      "sha256": "9eb5b03d15d006da49eb504148b18d5274c3f9ca87246840c49123acd132618e",
+      "old_sha256": "9eb5b03d15d006da49eb504148b18d5274c3f9ca87246840c49123acd132618e",
+      "changed": false
+    },
+    {
+      "path": "assets/Index-OBUypUlp.js",
+      "size": 3153,
+      "sha256": "922b0d762102f783c6be2a6594f3e104e6aa1bcb5c50a5485c802430a2a6e7bd",
+      "old_sha256": null,
+      "changed": true
+    },
+    {
+      "path": "assets/index-WjaZU2TB.js",
+      "size": 632945,
+      "sha256": "9dcad0fc9a263d98ff9b98aa82dbad7dbde54ffae44a925ac12c2306f83ae3cc",
+      "old_sha256": null,
+      "changed": true
+    },
+    {
+      "path": "index.html",
+      "size": 436397,
+      "sha256": "4ab1bd711f4483d8f49b038e5e2e5b7b974527d5b234dec514773e9bc4ecb183",
+      "old_sha256": "6aea942e564a8522db1ca7ea46fa52952c226a539587656f6c9e26049251274b",
+      "changed": true
+    }
+  ],
+  "status": "published",
+  "old_assets_preserved": [
+    "assets/Index-1oJPRZ7M.js",
+    "assets/Index-9Tc4sm2j.js",
+    "assets/Index-BDEDrf1a.js",
+    "assets/Index-BRfYOnXD.js",
+    "assets/Index-BRyMRwED.js",
+    "assets/Index-BisKiX-i.js",
+    "assets/Index-CSNb656k.js",
+    "assets/Index-CdNYVuRa.js",
+    "assets/Index-Cs1A7EWJ.js",
+    "assets/Index-DdPS1y6I.js",
+    "assets/Index-DhKLH1BA.js",
+    "assets/Index-Dx48HC--.js",
+    "assets/Index-FchZD-NC.js",
+    "assets/Index-gBsFBDVM.js",
+    "assets/Index-ra2pS6T1.js",
+    "assets/Index-zvy9t9iN.js",
+    "assets/corporate-background.webp",
+    "assets/index-3NIuCYux.css",
+    "assets/index-52jPDgM2.js",
+    "assets/index-BLZxSYfU.js",
+    "assets/index-BVwGC1Ba.css",
+    "assets/index-B_CyKFHh.js",
+    "assets/index-BdLUjxMm.js",
+    "assets/index-Bgb0ecRH.js",
+    "assets/index-BpTTfs6j.js",
+    "assets/index-CGC_V41V.js",
+    "assets/index-CR577FSQ.js",
+    "assets/index-CbsEx0CC.css",
+    "assets/index-CkvDo37Y.css",
+    "assets/index-CvAAyuOm.css",
+    "assets/index-Cvk9ArjO.js",
+    "assets/index-D-1E56UY.js",
+    "assets/index-D0sTf2Pk.js",
+    "assets/index-D6lNOAAX.css",
+    "assets/index-DGpduwoQ.js",
+    "assets/index-DHhVeh7-.js",
+    "assets/index-DKOqVBaS.js",
+    "assets/index-DMeyOy8D.js",
+    "assets/index-DmZ5GhWx.css",
+    "assets/index-DrHgHZ2i.css",
+    "assets/index-DwBOfZSA.js",
+    "assets/index-DzGD5xVO.css",
+    "assets/index-MbfaOb9n.css",
+    "assets/index-TSon770I.css",
+    "assets/index-VnJElvxy.js",
+    "assets/index-XM4m0xjF.js",
+    "assets/index-vRdOqVCC.css",
+    "assets/index-vgFmJjZx.css",
+    "assets/logo-bmg-consultores-transparent.png"
+  ],
+  "uploaded": [
+    "sitemap-routes.json",
+    "assets/Index-D1FUZbh7.js",
+    "assets/Index-OBUypUlp.js",
+    "assets/index-WjaZU2TB.js",
+    "index.html"
+  ],
+  "completed_at": "2026-09-22T19:52:56.012233"
+}

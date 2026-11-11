@@ -1,0 +1,61 @@
+Corrección inicio:
+Ajuste Definitivo de Navegación (Header) - BMG Consultores
+Hola, para limpiar visualmente la cabecera y elevar el estatus premium de la plataforma, vamos a retirar por completo las siglas "BG" y los iconos del menú superior. Ya tenemos el logo principal al costado, así que el menú debe quedar con texto limpio, minimalista y en este orden estratégico de izquierda a derecha:
+1. Emprendedor
+2. Contabilidad
+3. Legal
+4. Comercio Exterior
+5. Desarrollo IA
+6. Licitaciones
+7. Inmobiliaria
+8. Viajes
+9. Seguros
+10. Estrategia Premium (Botón destacado a la derecha)
+Adición al Ajuste de Navegación (Sección Institucional)
+Hola, para no saturar el menú superior con pestañas sueltas de identidad, por favor agrupa la información institucional al inicio creando un botón desplegable llamado "Corporativo". Al pasar el mouse, debe desplegar:
+• Quiénes Somos
+• Nuestra Fundadora
+El resto de las pestañas comerciales (Emprendedor, Contabilidad, Legal, etc.) continúan al costado en el orden enviado. También duplica el enlace de "Quiénes Somos" en el Footer (pie de página) de la web.
+Corrección y Ajuste de Métricas en Sección Institucional - BMG Consultores
+Hola, analizando el texto completo de la segunda sección, hay un error de consistencia en los contadores de la derecha que debemos corregir de inmediato antes del lanzamiento:
+1. Corrección de Servicios: La primera tarjeta dice "6 Servicios", pero en nuestro menú y estructura operamos con 9 áreas comerciales. Por favor, cambia ese indicador a "9 Divisiones".
+2. Actualización de Texto: En el párrafo que describe al equipo, por favor modifica la línea para que incluya las nuevas especialidades: "...expertos en contrataciones públicas, especialistas en comercio exterior y asesores de movilidad estratégica internacional..."
+3. Orden de Tarjetas: Asegúrate de que las tarjetas queden alineadas de forma limpia en este orden de izquierda a derecha: [500+ Clientes] | [10+ Años] | [9 Divisiones] | [2 Sedes].
+MÓDULO: MARCA PERSONAL DE LA FUNDADORA Y EMBUDO DE CAPTACIÓN PREMIUM (VERSIÓN BLINDADA)
+Para: Desarrollador / Especialista Web de BMG
+Objetivo: Implementar la página de la CEO con nombre protegido y configurar el sistema de filtros condicionales para el agendamiento de reuniones de alto valor.
+👑 PARTE 1: CONTENIDO PARA LA PÁGINA "NUESTRA FUNDADORA"
+(Nota para el programador: Esta página va enlazada dentro del menú desplegable "Corporativo". El diseño debe ser minimalista, tipo Stripe/Apple, con una fotografía corporativa de alta dirección a la izquierda y el texto estructurado a la derecha. Usar estrictamente el nombre configurado abajo por razones de seguridad).
+• Nombre y Cargo Principal:
+Blanca Gutiérrez | Socio Fundador & Directora Ejecutiva (CEO)
+• Texto Biográfico Oficial:
+"Blanca Gutiérrez es la mente estratégica y fundadora de BMG Consultores, una firma líder diseñada como una Red de Negocios Profesional de Alto Nivel y una plataforma de Gestión Corporativa 360° en el Perú. Bajo su dirección ejecutiva, el holding coordina un equipo multidisciplinario de élite que abarca desde la consultoría legal, tributaria y aduanera, hasta el desarrollo de Inteligencia Artificial y la estructuración de proyectos de inversión. Su enfoque empresarial está orientado a transformar la experiencia del mercado real en blindaje financiero y escalabilidad para organizaciones y capitales en crecimiento.
+El liderazgo de Blanca no proviene de la teoría académica tradicional, sino del campo de batalla comercial más exigente del país: el sector del retail y el comercio a gran escala. Desde muy joven, gestionó múltiples unidades comerciales, experimentando el dinamismo y los desafíos reales de emprender en el Perú. En este trayecto, procesó de primera mano las complejidades más agudas del entorno empresarial: fiscalizaciones tributarias, reestructuraciones financieras de alta volatilidad y la fragmentación de servicios profesionales. Lejos de ser un freno, asimiló estas experiencias como un activo estratégico invaluable: una maestría real en Gestión de Crisis, Optimización de Procesos y Mitigación de Riesgos.
+Al dominar estas variables, comprendió que para que un negocio escale con estándares internacionales y atraiga capitales globales de manera segura, requiere un blindaje estructural integrado de 360°, eliminando la fragmentación de proveedores aislados. Con la firme convicción de que ningún empresario debe poner en riesgo su patrimonio por falta de un respaldo integral, Blanca consolidó el ecosistema BMG. Hoy, el holding opera bajo su visión estratégica de manera dual: desde su Hub Comercial en La Victoria formaliza la fuerza del empresariado emergente, y desde su Hub Financiero en Miraflores construye el canal de confianza técnica y legal que los inversionistas internacionales exigen para desplegar sus fondos de manera segura en el país."
+PARTE 2: INGENIERÍA DE CAPTACIÓN Y FILTRO DE AGENDA PRIVADA
+Al final de la página de la fundadora, y dentro de la pestaña principal "Estrategia Premium", el programador debe colocar un botón destacado:
+👉 [ 💼 Solicitar Sesión Estratégica con la CEO ]
+LÓGICA DEL BACKEND (El Guardián Digital):
+Este botón NO debe abrir tu calendario (tipo Calendly) directamente. Al hacer clic, debe desplegar un Formulario de Precalificación Obligatorio con las siguientes 3 preguntas:
+1. ¿Cuál es el volumen de facturación mensual o el capital estimado de tu proyecto?
+[ ] Menos de S/ 20,000 mensuales.
+[ ] Entre S/ 20,000 y S/ 100,000 mensuales.
+[ ] Más de S/ 100,000 / Fondos de Inversión Internacionales.
+2. ¿Cuál es la naturaleza principal de tu consulta de alto nivel?
+[ ] Estructuración de Holdings u Optimización Fiscal Compleja.
+[ ] Proyectos de Importación / Cadenas de Suministro Globales.
+[ ] Inversiones Inmobiliarias, Saneamiento a gran escala o Fondeo Extranjero.
+[ ] Consultas operativas (Constitución básica, contabilidad mensual mype).
+3. ¿Cuál es tu presupuesto asignado para la implementación de esta solución estratégica?
+[ ] Presupuesto de entrada / PYME.
+[ ] Presupuesto Corporativo / Inversor de Capital.
+🔀 PARTE 3: REDIRECCIÓN INTELIGENTE DE LEADS (IF / ELSE)
+El sistema debe procesar las respuestas en milisegundos y aplicar la siguiente regla en el código:
+• CASO A: LEAD CALIFICADO PREMIUM (Inversionistas / Clientes Corporativos)
+Si el usuario marca las opciones más altas de facturación, proyectos de Miraflores o fondos internacionales:
+La web lo redirige automáticamente a tu enlace de agenda privado de reuniones. El sistema le envía una alerta push a tu celular que dice: «🔥 LEAD PREMIUM CALIFICADO: Un cliente corporativo ha agendado una cita directa contigo para inversión/holding». (Nota: El sistema no revelará tus datos personales en el mensaje).
+• CASO B: LEAD OPERATIVO ESTÁNDAR (Clientes del día a día)
+Si el usuario busca constitución básica, contabilidad mype o no cuenta con el presupuesto corporativo:
+El sistema oculta tu agenda privada y le muestra un mensaje automático en pantalla:
+«Gracias por tu información. Tu perfil ha sido asignado a nuestra Mesa de Entrada Centralizada. Un consultor senior de nuestro equipo se comunicará contigo vía WhatsApp en los próximos 15 minutos para atender tu requerimiento corporativo».
+Este lead se envía directo al Dashboard general del Front Desk, liberando tu tiempo de tareas operativas.

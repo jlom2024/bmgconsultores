@@ -1,0 +1,42 @@
+{
+  "base": "https://www.bmgconsultoresperu.com",
+  "views": [
+    {
+      "label": "desktop",
+      "h1": "Gestión Corporativa 360° y Red de Negocios Profesional de Alto Nivel.",
+      "h2": "Planteamos soluciones integrales para proteger tu empresa, mientras creamos oportunidades únicas de expansión e internacionalización.",
+      "h1Count": 1,
+      "heroWidth": 1434,
+      "viewport": 1440,
+      "headingsFit": true,
+      "oldCopyVisible": false,
+      "brokenImages": [],
+      "cta": "https://wa.me/51994118084",
+      "heroHeight": 1000
+    },
+    {
+      "label": "mobile",
+      "h1": "Gestión Corporativa 360° y Red de Negocios Profesional de Alto Nivel.",
+      "h2": "Planteamos soluciones integrales para proteger tu empresa, mientras creamos oportunidades únicas de expansión e internacionalización.",
+      "h1Count": 1,
+      "heroWidth": 384,
+      "viewport": 390,
+      "headingsFit": true,
+      "oldCopyVisible": false,
+      "brokenImages": [],
+      "cta": "https://wa.me/51994118084",
+      "heroHeight": 844
+    }
+  ],
+  "knownIssues": [
+    {
+      "url": "https://unpkg.com/@lemonsliceai/lemon-slice-widget@1.0.32/dist/index.js",
+      "message": "Error: Duplicate DailyIframe instances are not allowed"
+    },
+    {
+      "url": "https://unpkg.com/@lemonsliceai/lemon-slice-widget@1.0.32/dist/index.js",
+      "message": "Error: Duplicate DailyIframe instances are not allowed"
+    }
+  ],
+  "unexpectedErrors": []
+}

@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>BG Travel Explorer &middot; Landing Interactiva</title>
+<style>
+:root{
+  --ink:#07111f;
+  --muted:#6b7280;
+  --blue:#071f4a;
+  --blue2:#0b3b7a;
+  --gold:#c8a45d;
+  --bg:#f7f9fc;
+  --line:#e6eaf1;
+  --paper:#fff;
+  --shadow:0 30px 90px rgba(7,17,31,.14);
+  --font:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+
+.hero{
+  min-height:100svh;
+  position:relative;
+  color:#fff;
+  display:flex;
+  flex-direction:column;
+  isolation:isolate;
+  overflow:hidden;
+}
+.hero:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:url('portada-hero-bg-travel.png') center/cover no-repeat;
+  z-index:-3;
+}
+.hero:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(90deg,rgba(5,7,11,.82),rgba(5,7,11,.38),rgba(5,7,11,.08)),
+             radial-gradient(circle at 72% 18%,rgba(200,164,93,.22),transparent 32%);
+  z-index:-2;
+}
+.orb{
+  position:absolute;
+  border:1px solid rgba(200,164,93,.34);
+  border-radius:50%;
+  pointer-events:none;
+}
+.orb.o1{width:min(720px,55vw);height:min(720px,55vw);right:min(-220px,-12vw);top:min(-230px,-14vw)}
+.orb.o2{width:min(360px,28vw);height:min(360px,28vw);right:min(120px,8vw);top:min(110px,8vw)}
+
+.nav{
+  height:86px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 clamp(18px,5vw,76px);
+  position:relative;
+  z-index:5;
+  gap:16px;
+}
+.brand,.kreo{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  font-weight:800;
+  flex-shrink:0;
+}
+.brand img{width:46px;height:46px;border-radius:50%;object-fit:cover}
+.kreo{
+  padding:8px 12px;
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:999px;
+  background:rgba(255,255,255,.10);
+  backdrop-filter:blur(16px);
+}
+.kreo img{width:28px;height:40px;object-fit:contain}
+
+.hero-inner{
+  flex:1;
+  display:grid;
+  grid-template-columns:minmax(0,1.05fr) minmax(300px,.95fr);
+  gap:clamp(28px,4vw,50px);
+  align-items:center;
+  padding:32px clamp(18px,5vw,76px) 64px;
+}
+.eyebrow{
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:.22em;
+  color:var(--gold);
+  font-weight:800;
+}
+.h1{
+  font-size:clamp(46px,7vw,118px);
+  line-height:.9;
+  letter-spacing:-.07em;
+  font-weight:850;
+  margin:22px 0 22px;
+  max-width:960px;
+}
+.lead{
+  font-size:clamp(18px,2vw,28px);
+  line-height:1.4;
+  color:#dce6f5;
+  max-width:760px;
+}
+.actions{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-top:32px;
+}
+.btn{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:14px 20px;
+  border-radius:999px;
+  font-weight:800;
+  letter-spacing:-.01em;
+  transition:.25s ease;
+  border:1px solid rgba(255,255,255,.18);
+  text-align:center;
+  justify-content:center;
+  font-size:clamp(13px,1.5vw,16px);
+}
+.btn.primary{background:#fff;color:var(--ink)}
+.btn.secondary{background:rgba(255,255,255,.08);color:#fff;backdrop-filter:blur(16px)}
+.btn:hover{transform:translateY(-2px);box-shadow:0 18px 44px rgba(0,0,0,.25)}
+
+.panel{
+  background:rgba(255,255,255,.10);
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:34px;
+  padding:16px;
+  box-shadow:0 30px 90px rgba(0,0,0,.28);
+  backdrop-filter:blur(22px);
+  max-width:100%;
+}
+.preview-card{
+  aspect-ratio:16/10;
+  border-radius:24px;
+  overflow:hidden;
+  position:relative;
+  background:#07111f;
+}
+.preview-card img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+.preview-card:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(0deg,rgba(5,7,11,.66),transparent 58%);
+}
+.mini-controls{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-top:12px;
+  color:#dce6f5;
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:.16em;
+}
+.dots{display:flex;gap:8px}
+.dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.35)}
+.dot.active{background:var(--gold)}
+
+section{
+  padding:clamp(72px,9vw,120px) clamp(18px,5vw,76px);
+}
+.section-head{
+  display:flex;
+  justify-content:space-between;
+  gap:40px;
+  align-items:end;
+  margin-bottom:42px;
+  flex-wrap:wrap;
+}
+.section-head h2{
+  font-size:clamp(34px,4.5vw,72px);
+  line-height:.95;
+  letter-spacing:-.055em;
+  margin:12px 0 0;
+  max-width:850px;
+}
+.section-head p{
+  max-width:460px;
+  color:var(--muted);
+  font-size:18px;
+  line-height:1.55;
+  margin:0;
+}
+.grid{display:grid;gap:18px}
+.cards{grid-template-columns:repeat(4,1fr)}
+.card{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:26px;
+  padding:28px;
+  box-shadow:0 18px 55px rgba(7,17,31,.06);
+}
+.card h3{
+  font-size:clamp(20px,2vw,25px);
+  margin:0 0 10px;
+  letter-spacing:-.03em;
+}
+.card p{color:var(--muted);line-height:1.55;margin:0}
+.metric{
+  font-size:clamp(36px,4vw,50px);
+  line-height:1;
+  font-weight:850;
+  letter-spacing:-.06em;
+  color:var(--blue);
+  margin:0 0 10px;
+}
+
+.showcase{background:var(--paper)}
+.show-grid{
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  gap:22px;
+  align-items:stretch;
+}
+.shot{
+  border-radius:34px;
+  overflow:hidden;
+  position:relative;
+  min-height:clamp(260px,40vw,420px);
+  background:#07111f;
+  box-shadow:var(--shadow);
+}
+.shot img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  position:absolute;
+  inset:0;
+}
+.shot .copy{
+  position:absolute;
+  left:32px;
+  bottom:32px;
+  right:32px;
+  color:white;
+  z-index:2;
+}
+.shot .copy h3{
+  font-size:clamp(20px,2vw,30px);
+  margin:8px 0 0;
+}
+.shot:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(0deg,rgba(5,7,11,.72),rgba(5,7,11,.06) 62%);
+}
+.stack{display:grid;gap:22px}
+.stack .shot{min-height:clamp(160px,20vw,220px)}
+
+.preview-section{
+  background:linear-gradient(135deg,#061226,#071f4a);
+  color:#fff;
+}
+.preview-section .section-head p{color:#b8c6dc}
+.browser{
+  background:#0b1220;
+  border:1px solid rgba(255,255,255,.16);
+  border-radius:30px;
+  overflow:hidden;
+  box-shadow:0 35px 100px rgba(0,0,0,.35);
+}
+.browserbar{
+  height:52px;
+  display:flex;
+  align-items:center;
+  gap:9px;
+  padding:0 18px;
+  background:rgba(255,255,255,.06);
+  border-bottom:1px solid rgba(255,255,255,.10);
+}
+.light{width:11px;height:11px;border-radius:50%;background:rgba(255,255,255,.22)}
+.browser iframe{
+  width:100%;
+  height:min(72vh,760px);
+  border:0;
+  background:#fff;
+  display:block;
+}
+
+.download{background:var(--paper)}
+.download-box{
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:32px;
+  align-items:center;
+  background:linear-gradient(135deg,#071f4a,#061226);
+  color:white;
+  border-radius:38px;
+  padding:clamp(32px,5vw,56px);
+  box-shadow:var(--shadow);
+  position:relative;
+  overflow:hidden;
+}
+.download-box:after{
+  content:"";
+  position:absolute;
+  right:min(-160px,-10vw);
+  top:min(-190px,-12vw);
+  width:min(500px,40vw);
+  height:min(500px,40vw);
+  border:1px solid rgba(200,164,93,.28);
+  border-radius:50%;
+}
+.download-box h2{
+  font-size:clamp(30px,4.5vw,68px);
+  line-height:.98;
+  letter-spacing:-.055em;
+  margin:0 0 16px;
+  position:relative;
+  z-index:1;
+}
+.download-box p{
+  color:#dce6f5;
+  font-size:17px;
+  line-height:1.55;
+  max-width:680px;
+  margin:0;
+  position:relative;
+  z-index:1;
+}
+.download-box .btn{
+  position:relative;
+  z-index:1;
+  white-space:nowrap;
+}
+
+.footer{
+  padding:36px clamp(18px,5vw,76px);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  color:#697386;
+  font-size:13px;
+  gap:18px;
+  flex-wrap:wrap;
+}
+.footer img{height:42px;width:auto;object-fit:contain}
+
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease}
+.reveal.on{opacity:1;transform:none}
+
+@media(max-width:1100px){
+  .hero-inner{grid-template-columns:1fr}
+  .panel{max-width:680px;margin:0 auto;width:100%}
+  .show-grid,.download-box{grid-template-columns:1fr}
+  .cards{grid-template-columns:repeat(2,1fr)}
+  .download-box .btn{width:100%;justify-content:center}
+}
+@media(max-width:720px){
+  .nav{height:auto;padding:18px clamp(16px,4vw,24px);flex-wrap:wrap;gap:12px}
+  .brand span{font-size:11px;letter-spacing:.08em}
+  .kreo span{display:none}
+  .kreo{padding:6px}
+  .brand img{width:38px;height:38px}
+  .hero-inner{padding:22px clamp(16px,4vw,24px) 48px}
+  .h1{font-size:clamp(40px,13vw,58px)}
+  .lead{font-size:18px}
+  .actions{flex-direction:column;align-items:stretch}
+  .btn{width:100%;padding:14px 18px}
+  .panel{border-radius:24px;padding:12px}
+  .preview-card{border-radius:18px}
+  .section-head{display:block;margin-bottom:32px}
+  .section-head p{max-width:none;margin-top:12px}
+  .cards{grid-template-columns:1fr}
+  .show-grid,.stack{gap:16px}
+  .shot{border-radius:24px;min-height:280px}
+  .shot .copy{left:22px;right:22px;bottom:22px}
+  .stack .shot{min-height:180px}
+  .browser{border-radius:22px}
+  .browser iframe{height:min(60vh,520px)}
+  .download-box{border-radius:26px;gap:24px}
+  .download-box h2{font-size:clamp(28px,8vw,42px)}
+  .footer{justify-content:center;text-align:center}
+  .footer img{height:34px}
+}
+@media(max-width:380px){
+  .h1{font-size:clamp(34px,12vw,42px)}
+  .browser iframe{height:min(52vh,420px)}
+}
+</style>
+</head>
+<body>
+<header class="hero" id="top">
+  <div class="orb o1"></div><div class="orb o2"></div>
+  <nav class="nav">
+    <a class="brand" href="#top"><img src="bg-travel-logo.png" alt="BG Travel logo"><span>BG Travel Explorer</span></a>
+    <a class="kreo" href="https://kreoia.site" target="_blank" rel="noopener"><img src="sello-naranja.png" alt="KREO IA Studio"><span>KREO IA Studio</span></a>
+  </nav>
+  <div class="hero-inner">
+    <div>
+      <div class="eyebrow">Ecosistema inteligente de viajes</div>
+      <h1 class="h1">Descubre.<br>Planifica.<br>Vive.</h1>
+      <p class="lead">BG Travel Explorer transforma la forma en que las personas imaginan, deciden y viven sus viajes mediante IA, datos y dise&ntilde;o experiencial.</p>
+      <div class="actions">
+        <a class="btn primary" href="downloads/bg-travel-explorer-brochure.pdf" download>Descargar brochure PDF</a>
+        <a class="btn secondary" href="#preview">Ver preview interactivo</a>
+      </div>
+    </div>
+    <div class="panel reveal">
+      <div class="preview-card"><img id="heroShot" src="experiencias-premium.png" alt="Preview BG Travel Explorer"></div>
+      <div class="mini-controls"><span>Preview visual</span><div class="dots"><span class="dot active"></span><span class="dot"></span><span class="dot"></span></div></div>
+    </div>
+  </div>
+</header>
+<section class="reveal">
+  <div class="section-head">
+    <div><div class="eyebrow">La propuesta</div><h2>No es una agencia. Es una nueva capa de inteligencia para viajar.</h2></div>
+    <p>Una landing de presentaci&oacute;n para abrir la conversaci&oacute;n, mostrar la visi&oacute;n y permitir descargar el brochure ejecutivo completo.</p>
+  </div>
+  <div class="grid cards">
+    <div class="card"><div class="metric">IA</div><h3>Planificaci&oacute;n inteligente</h3><p>Conversaci&oacute;n, contexto, presupuesto, preferencias y rutas convertidas en una experiencia clara.</p></div>
+    <div class="card"><div class="metric">22</div><h3>P&aacute;ginas ejecutivas</h3><p>Un brochure premium 16:9 dise&ntilde;ado para enamorar al cliente desde la primera impresi&oacute;n.</p></div>
+    <div class="card"><div class="metric">3D</div><h3>Mapas y diagramas</h3><p>Visuales futuristas para explicar producto, tecnolog&iacute;a, arquitectura y oportunidad.</p></div>
+    <div class="card"><div class="metric">SaaS</div><h3>Visi&oacute;n escalable</h3><p>De ventaja competitiva propia a plataforma internacional para agencias de viajes.</p></div>
+  </div>
+</section>
+<section class="showcase reveal">
+  <div class="section-head">
+    <div><div class="eyebrow">Experiencia visual</div><h2>Un brochure que se siente como producto, no como documento.</h2></div>
+    <p>Fotograf&iacute;a cinematogr&aacute;fica, mockups, mapas, narrativa emocional y diagramas para presentar el futuro de BG Travel.</p>
+  </div>
+  <div class="show-grid">
+    <article class="shot"><img src="mapa-inteligente-3d.png" alt="Mapa inteligente"><div class="copy"><div class="eyebrow">Mapa Inteligente</div><h3>Rutas, costos, clima y lugares ocultos en una sola interfaz.</h3></div></article>
+    <div class="stack">
+      <article class="shot"><img src="ruta-del-explorador.png" alt="Ruta del Explorador"><div class="copy"><div class="eyebrow">Ruta del Explorador</div><h3>Viajes aut&eacute;nticos, humanos y memorables.</h3></div></article>
+      <article class="shot"><img src="cierre-planeta-tierra.png" alt="Vision global"><div class="copy"><div class="eyebrow">Visi&oacute;n global</div><h3>No vendemos destinos. Creamos recuerdos.</h3></div></article>
+    </div>
+  </div>
+</section>
+<section class="preview-section reveal" id="preview">
+  <div class="section-head">
+    <div><div class="eyebrow">Preview interactivo</div><h2>Explora el brochure antes de descargarlo.</h2></div>
+    <p>Vista embebida del deck ejecutivo completo. Para compartir o subir a Netlify, usa el paquete descargable.</p>
+  </div>
+  <div class="browser">
+    <div class="browserbar"><span class="light"></span><span class="light"></span><span class="light"></span><span style="margin-left:12px;color:#9fb0c8;font-size:12px">brochure.html</span></div>
+    <iframe src="brochure.html" title="BG Travel Explorer Brochure" loading="lazy"></iframe>
+  </div>
+</section>
+<section class="download reveal" id="download">
+  <div class="download-box">
+    <div>
+      <div class="eyebrow">Descarga ejecutiva</div>
+      <h2>Obt&eacute;n el brochure completo de BG Travel Explorer.</h2>
+      <p>Incluye el brochure ejecutivo en formato PDF, listo para compartir con clientes, enviar por correo o presentar como documento oficial.</p>
+    </div>
+    <a class="btn primary" href="downloads/bg-travel-explorer-brochure.pdf" download>Descargar PDF</a>
+  </div>
+</section>
+<footer class="footer">
+  <span>BG Travel Explorer &middot; Powered by KREO IA Studio</span>
+  <img src="sello-naranja.png" alt="KREO IA Studio">
+</footer>
+<script>
+const shots=['experiencias-premium.png','mapa-inteligente-3d.png','cierre-planeta-tierra.png'];let i=0;const img=document.getElementById('heroShot');const dots=[...document.querySelectorAll('.dot')];setInterval(()=>{i=(i+1)%shots.length;img.src=shots[i];dots.forEach((d,n)=>d.classList.toggle('active',n===i));},2600);
+const io=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('on')})},{threshold:.12});document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

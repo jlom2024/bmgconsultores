@@ -1,0 +1,30 @@
+# Dependencies
+node_modules/
+**/node_modules/
+
+# Production builds
+dist/
+dist-ssr/
+.vercel/
+.netlify/
+
+# Backups & archives
+backups/
+*.zip
+*.tar.gz
+
+# OS & Logs
+Thumbs.db
+*.log
+.DS_Store
+
+# Environment & local secrets
+.env
+.env.local
+.env.*.local
+
+# Temp & miscellaneous
+tmp/
+.tmp/
+unpacked/
+seguros-page-block.tsx

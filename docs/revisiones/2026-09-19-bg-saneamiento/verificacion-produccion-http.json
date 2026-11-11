@@ -1,0 +1,37 @@
+[
+  {
+    "path": "sitemap-routes.json",
+    "http": 200,
+    "sha256_match": true
+  },
+  {
+    "path": "assets/Index-9Tc4sm2j.js",
+    "http": 200,
+    "sha256_match": true
+  },
+  {
+    "path": "assets/index-BpTTfs6j.js",
+    "http": 200,
+    "sha256_match": true
+  },
+  {
+    "path": "assets/Index-BRyMRwED.js",
+    "http": 200,
+    "sha256_match": true
+  },
+  {
+    "path": "assets/index-DzGD5xVO.css",
+    "http": 200,
+    "sha256_match": true
+  },
+  {
+    "path": "index.html",
+    "http": 200,
+    "sha256_match": true
+  },
+  {
+    "path": "/inmobiliario",
+    "http": 200,
+    "sha256_match": true
+  }
+]

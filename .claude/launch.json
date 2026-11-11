@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "bmg-dev",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["vite", "--port", "8080"],
+      "port": 8080
+    },
+    {
+      "name": "bmg-new-dev",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["vite", "new", "--port", "8081"],
+      "port": 8081
+    }
+  ]
+}

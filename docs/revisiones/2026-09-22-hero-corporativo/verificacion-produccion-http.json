@@ -1,0 +1,34 @@
+[
+  {
+    "path": "sitemap-routes.json",
+    "http": 200,
+    "sha256_match": true
+  },
+  {
+    "path": "assets/Index-D1FUZbh7.js",
+    "http": 200,
+    "sha256_match": true
+  },
+  {
+    "path": "assets/Index-OBUypUlp.js",
+    "http": 200,
+    "sha256_match": true
+  },
+  {
+    "path": "assets/index-WjaZU2TB.js",
+    "http": 200,
+    "sha256_match": true
+  },
+  {
+    "path": "index.html",
+    "http": 200,
+    "sha256_match": true
+  },
+  {
+    "path": "/",
+    "http": 200,
+    "h1": "Gestión Corporativa 360° y Red de Negocios Profesional de Alto Nivel.",
+    "h2": "Planteamos soluciones integrales para proteger tu empresa, mientras creamos oportunidades únicas de expansión e internacionalización.",
+    "server_rendered": true
+  }
+]

@@ -1,0 +1,542 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>BG Travel Explorer &middot; Brochure Ejecutivo</title>
+<style>
+:root{
+  --bg:#f7f9fc; --paper:#ffffff; --ink:#07111f; --muted:#6b7280; --line:#e6eaf1;
+  --blue:#071f4a; --blue2:#0b3b7a; --gold:#c8a45d; --soft:#f1f4f8; --black:#05070b;
+  --shadow:0 30px 80px rgba(7,17,31,.12); --radius:30px;
+  --font:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);font-family:var(--font);color:var(--ink);}
+
+.deck{width:100%;padding:32px;display:grid;gap:32px;}
+.slide{
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  aspect-ratio:16/9;
+  width:min(1280px,100%);
+  min-height:0;
+  margin:auto;
+  background:var(--paper);
+  border-radius:34px;
+  overflow:hidden;
+  box-shadow:var(--shadow);
+  padding:64px;
+  isolation:isolate;
+}
+.slide.dark{background:linear-gradient(135deg,#061226,#05070b);color:white}
+.slide.blue{background:linear-gradient(135deg,#061a3d,#082e67);color:white}
+.slide.soft{background:#f8fafc}
+.slide.photo{padding:0;color:white;background:#05070b}
+.slide.split{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:stretch}
+
+.bgimg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.veil{position:absolute;inset:0;background:linear-gradient(90deg,rgba(5,7,11,.72),rgba(5,7,11,.18),rgba(5,7,11,.05));z-index:-1}
+.veil.bottom{background:linear-gradient(0deg,rgba(5,7,11,.72),rgba(5,7,11,.08) 60%,rgba(5,7,11,.08))}
+
+.logo{display:flex;align-items:center;gap:14px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;font-size:14px}
+.logo img{width:46px;height:46px;border-radius:50%;object-fit:cover}
+.logo.white{color:white}
+.kreo-mark{
+  display:flex;align-items:center;gap:12px;padding:10px 14px;
+  border:1px solid rgba(255,255,255,.20);border-radius:999px;
+  background:rgba(255,255,255,.10);backdrop-filter:blur(18px);width:max-content;
+}
+.kreo-mark.darkmark{border-color:var(--line);background:white;color:var(--ink);box-shadow:0 18px 45px rgba(7,17,31,.08)}
+.kreo-mark img{width:34px;height:50px;object-fit:contain}
+.kreo-mark span{font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:800}
+
+.eyebrow{font-size:13px;text-transform:uppercase;letter-spacing:.18em;color:var(--gold);font-weight:700}
+.kicker{font-size:13px;text-transform:uppercase;letter-spacing:.18em;color:var(--muted);font-weight:700}
+.dark .kicker,.blue .kicker{color:#aab6cc}
+h1{font-size:72px;line-height:.92;letter-spacing:-.06em;margin:24px 0 18px;max-width:850px}
+h2{font-size:52px;line-height:1;letter-spacing:-.045em;margin:14px 0 18px;max-width:850px}
+h3{font-size:25px;line-height:1.1;letter-spacing:-.02em;margin:0 0 10px}
+.lead{font-size:24px;line-height:1.35;color:#334155;max-width:720px}
+.dark .lead,.blue .lead,.photo .lead{color:#dce6f5}
+.tiny{font-size:13px;color:var(--muted);line-height:1.5}
+.white{color:white}.muted{color:var(--muted)}.gold{color:var(--gold)}
+
+.grid{display:grid;gap:18px}
+.grid.cols2{grid-template-columns:repeat(2,1fr)}
+.grid.cols3{grid-template-columns:repeat(3,1fr)}
+.grid.cols4{grid-template-columns:repeat(4,1fr)}
+.card{
+  background:rgba(255,255,255,.78);border:1px solid var(--line);
+  border-radius:24px;padding:24px;box-shadow:0 18px 50px rgba(7,17,31,.06);
+  backdrop-filter:blur(20px);
+}
+.dark .card,.blue .card{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.16);color:white}
+.metric{font-size:42px;font-weight:800;letter-spacing:-.045em}
+.bar{height:8px;border-radius:999px;background:#e8edf5;overflow:hidden;margin-top:14px}
+.bar span{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,var(--blue),var(--gold))}
+.quote{font-size:42px;line-height:1.08;letter-spacing:-.045em;font-weight:760}
+.bigline{font-size:62px;line-height:1.02;letter-spacing:-.055em;font-weight:800;max-width:880px}
+
+.nav{
+  display:flex;justify-content:space-between;align-items:center;
+  font-size:12px;color:#8a95a8;letter-spacing:.08em;text-transform:uppercase;
+  margin-top:auto;padding-top:24px;flex-wrap:wrap;gap:12px;
+}
+.dark .nav,.photo .nav,.blue .nav{color:#b6c3d8}
+.orb{position:absolute;border:1px solid rgba(200,164,93,.36);border-radius:50%;pointer-events:none}
+.orb.one{width:520px;height:520px;right:-160px;top:-180px}
+.orb.two{width:300px;height:300px;right:80px;top:80px}
+.line{height:1px;background:var(--line);margin:24px 0}
+.dark .line,.blue .line{background:rgba(255,255,255,.14)}
+
+.story{display:grid;grid-template-columns:1fr 1fr;gap:38px;align-items:center}
+.phone{
+  width:min(310px,92%);aspect-ratio:310/610;border-radius:46px;background:#07111f;
+  padding:16px;box-shadow:0 30px 70px rgba(0,0,0,.35);margin:auto;
+}
+.screen{height:100%;border-radius:34px;background:linear-gradient(180deg,#ffffff,#eef4fb);padding:22px;display:flex;flex-direction:column;gap:14px}
+.bubble{border-radius:18px;padding:13px 15px;font-size:13px;line-height:1.35}
+.bubble.user{background:#eef2f7;color:#07111f;align-self:flex-end;width:78%}
+.bubble.ai{background:#071f4a;color:white;width:88%}
+.itinerary{background:white;border:1px solid #e5eaf2;border-radius:20px;padding:14px;color:#07111f;box-shadow:0 10px 30px rgba(7,17,31,.06)}
+
+.flow{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:35px}
+.step{padding:14px 16px;border:1px solid var(--line);border-radius:18px;background:white;font-weight:700}
+.arrow{color:var(--gold);font-weight:900}
+.tech{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:30px}
+.node{border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.08);border-radius:18px;padding:18px;font-weight:700}
+.arch{position:relative;height:430px;margin-top:12px}
+.arch .hub{
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:230px;height:230px;border-radius:50%;display:grid;place-items:center;text-align:center;
+  background:linear-gradient(135deg,#0b3b7a,#071f4a);color:white;box-shadow:0 0 0 18px rgba(11,59,122,.06);
+}
+.arch .sat{
+  position:absolute;width:150px;border:1px solid var(--line);border-radius:20px;
+  padding:14px;background:white;text-align:center;font-weight:700;
+}
+.sat.s1{left:5%;top:9%}.sat.s2{right:7%;top:9%}.sat.s3{left:8%;bottom:12%}.sat.s4{right:8%;bottom:12%}.sat.s5{left:43%;top:0}.sat.s6{left:43%;bottom:0}
+.timeline{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-top:40px}
+.phase{position:relative;background:white;border:1px solid var(--line);border-radius:22px;padding:20px;min-height:190px}
+.phase:before{content:"";position:absolute;top:0;left:20px;right:20px;height:5px;border-radius:999px;background:linear-gradient(90deg,var(--blue),var(--gold))}
+.page-no{font-variant-numeric:tabular-nums}
+.fullcenter{height:100%;display:flex;flex-direction:column;justify-content:center}
+.caption{font-size:15px;line-height:1.45;color:var(--muted)}
+
+/* utilidades de contenido */
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.slide-body{position:relative;z-index:1;flex:1;display:flex;flex-direction:column;justify-content:center}
+.slide-end{position:relative;z-index:1;flex:1;display:flex;flex-direction:column;justify-content:flex-end}
+.slide-center{position:relative;z-index:1;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end}
+
+@media(max-width:1100px){
+  .slide{padding:44px;border-radius:28px}
+  h1{font-size:58px}h2{font-size:42px}h3{font-size:22px}
+  .lead{font-size:21px}.quote{font-size:34px}.bigline{font-size:48px}
+  .story,.slide.split,.compare{grid-template-columns:1fr}
+  .grid.cols4{grid-template-columns:repeat(2,1fr)}
+  .timeline{grid-template-columns:repeat(3,1fr)}
+  .tech{grid-template-columns:repeat(3,1fr)}
+  .arch{height:auto;display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:28px}
+  .arch .hub{position:static;transform:none;width:100%;height:auto;aspect-ratio:1/1;grid-column:1/-1;max-width:260px;margin:0 auto}
+  .arch .sat{position:static;width:auto}
+  .phone{margin:0 auto}
+}
+@media(max-width:720px){
+  .deck{padding:16px;gap:18px}
+  .slide{height:auto;aspect-ratio:auto;padding:28px;border-radius:24px;gap:18px}
+  .slide.photo{padding:0}
+  .photo .slide-body,.photo .slide-end,.photo .slide-center{padding:28px}
+  h1{font-size:clamp(32px,9vw,46px);margin:14px 0 12px}
+  h2{font-size:clamp(26px,7vw,36px);margin:10px 0 12px}
+  h3{font-size:clamp(18px,5vw,22px)}
+  .lead{font-size:clamp(16px,4.5vw,20px)}
+  .quote{font-size:clamp(22px,6vw,30px)}
+  .bigline{font-size:clamp(28px,8vw,40px)}
+  .metric{font-size:clamp(30px,7vw,40px)}
+  .card{padding:18px;border-radius:20px}
+  .topbar{gap:14px}
+  .logo{font-size:12px}.logo img{width:36px;height:36px}
+  .kreo-mark{padding:8px 10px;gap:8px}
+  .kreo-mark img{width:24px;height:36px}
+  .kreo-mark span{font-size:9px}
+  .grid.cols2,.grid.cols3,.grid.cols4{grid-template-columns:1fr}
+  .flow{flex-direction:column;align-items:stretch;gap:8px;margin-top:24px}
+  .step{text-align:center}
+  .arrow{transform:rotate(90deg);text-align:center}
+  .tech{grid-template-columns:repeat(2,1fr)}
+  .timeline{grid-template-columns:repeat(2,1fr)}
+  .phase{min-height:auto}
+  .nav{font-size:10px;padding-top:18px}
+  .phone{padding:12px;border-radius:34px}
+  .screen{border-radius:26px;padding:14px;gap:10px}
+  .bubble{font-size:11px;padding:10px 12px}
+  .itinerary{padding:10px}
+  .orb.one{width:280px;height:280px;right:-90px;top:-100px}
+  .orb.two{width:160px;height:160px;right:30px;top:30px}
+}
+@media(max-width:420px){
+  .slide{padding:22px}
+  .photo .slide-body,.photo .slide-end,.photo .slide-center{padding:22px}
+  .timeline{grid-template-columns:1fr}
+  .tech{grid-template-columns:1fr}
+}
+@media print{
+  body{background:white}
+  .deck{padding:0;gap:0}
+  .slide{border-radius:0;box-shadow:none;width:100%;page-break-after:always;aspect-ratio:16/9;height:auto}
+}
+</style>
+</head>
+<body><main class="deck">
+
+<section class="slide photo">
+  <img class="bgimg" src="portada-hero-bg-travel.png" alt="">
+  <div class="veil"></div>
+  <div class="slide-body" style="justify-content:space-between">
+    <div class="topbar">
+      <div class="logo white"><img src="bg-travel-logo.png" alt="">BG Travel Explorer</div>
+      <div class="kreo-mark"><img src="sello-naranja.png" alt=""><span>Powered by<br>KREO IA Studio</span></div>
+    </div>
+    <div>
+      <div class="eyebrow">Descubre &middot; Planifica &middot; Vive</div>
+      <h1>BG TRAVEL EXPLORER</h1>
+      <p class="lead">El futuro de las agencias de viajes comienza hoy.</p>
+    </div>
+    <div class="nav"><span>Brochure ejecutivo</span><span class="page-no">01 / 22</span></div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="slide-body">
+    <div class="story">
+      <div>
+        <div class="kicker">La historia</div>
+        <h2>Un padre, una hija y demasiadas pesta&ntilde;as abiertas.</h2>
+        <p class="lead">Quiere regalarle un viaje inolvidable. No sabe el destino, el presupuesto real ni qu&eacute; lugares valen la pena. Abre Google, YouTube, TikTok, Instagram y blogs. Horas despu&eacute;s, sigue confundido.</p>
+        <p class="lead"><b>Entonces descubre BG Travel Explorer. Todo cambia.</b></p>
+      </div>
+      <div class="card">
+        <h3>De caos digital a decisi&oacute;n emocional</h3>
+        <div class="line"></div>
+        <p>BG Travel Explorer convierte deseo, restricciones y contexto personal en una ruta clara, humana y accionable.</p>
+        <div class="grid cols2" style="margin-top:18px">
+          <div><div class="metric">5 d&iacute;as</div><div class="tiny">Tiempo disponible</div></div>
+          <div><div class="metric">$900</div><div class="tiny">Presupuesto familiar</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="nav"><span>Storytelling</span><span class="page-no">02 / 22</span></div>
+</section>
+
+<section class="slide soft">
+  <div class="slide-body">
+    <div class="kicker">El problema</div>
+    <h2>Las agencias venden vuelos. Los viajeros compran experiencias.</h2>
+    <div class="grid cols3" style="margin-top:34px">
+      <div class="card"><h3>Inspiraci&oacute;n dispersa</h3><p>El deseo nace fuera de la agencia: redes, videos, blogs y recomendaciones sueltas.</p><div class="bar"><span style="width:86%"></span></div></div>
+      <div class="card"><h3>Planificaci&oacute;n agotadora</h3><p>El usuario cruza presupuestos, rutas, clima, tiempos y gustos sin una gu&iacute;a inteligente.</p><div class="bar"><span style="width:74%"></span></div></div>
+      <div class="card"><h3>Venta desconectada</h3><p>La cotizaci&oacute;n llega tarde: cuando el viajero ya est&aacute; cansado o se fue a otro canal.</p><div class="bar"><span style="width:62%"></span></div></div>
+    </div>
+    <p class="quote" style="margin-top:44px">BG Travel Explorer cambia esa realidad.</p>
+  </div>
+  <div class="nav"><span>Diagn&oacute;stico</span><span class="page-no">03 / 22</span></div>
+</section>
+
+<section class="slide blue">
+  <div class="orb one"></div><div class="orb two"></div>
+  <div class="slide-body">
+    <div class="kicker">La oportunidad</div>
+    <h2>La inteligencia artificial est&aacute; redise&ntilde;ando la industria tur&iacute;stica.</h2>
+    <p class="lead">La pr&oacute;xima ventaja competitiva no ser&aacute; vender m&aacute;s opciones. Ser&aacute; comprender mejor el viaje que cada persona quiere vivir.</p>
+    <div class="grid cols3" style="margin-top:45px">
+      <div class="card"><div class="metric">IA</div><p>Personalizaci&oacute;n conversacional.</p></div>
+      <div class="card"><div class="metric">Data</div><p>Contexto, costos, clima y preferencias.</p></div>
+      <div class="card"><div class="metric">BG</div><p>Una marca lista para liderar la transformaci&oacute;n.</p></div>
+    </div>
+  </div>
+  <div class="nav"><span>Momento estrat&eacute;gico</span><span class="page-no">04 / 22</span></div>
+</section>
+
+<section class="slide">
+  <div class="slide-body">
+    <div class="kicker">&iquest;Qu&eacute; es?</div>
+    <h2>Un ecosistema inteligente de planificaci&oacute;n de viajes.</h2>
+    <p class="lead">No es una agencia. No es un chatbot. No es una app tur&iacute;stica. Es una capa de inteligencia que conversa, aprende, descubre, sugiere, organiza, cotiza y acompa&ntilde;a.</p>
+    <div class="flow">
+      <span class="step">Conversa</span><span class="arrow">&rarr;</span>
+      <span class="step">Aprende</span><span class="arrow">&rarr;</span>
+      <span class="step">Descubre</span><span class="arrow">&rarr;</span>
+      <span class="step">Sugiere</span><span class="arrow">&rarr;</span>
+      <span class="step">Organiza</span><span class="arrow">&rarr;</span>
+      <span class="step">Cotiza</span><span class="arrow">&rarr;</span>
+      <span class="step">Acompa&ntilde;a</span>
+    </div>
+  </div>
+  <div class="nav"><span>Producto</span><span class="page-no">05 / 22</span></div>
+</section>
+
+<section class="slide photo">
+  <img class="bgimg" src="experiencias-premium.png" alt="">
+  <div class="veil bottom"></div>
+  <div class="slide-end">
+    <div class="eyebrow">Experiencias</div>
+    <h2>De categor&iacute;as de viaje a momentos dise&ntilde;ados para personas reales.</h2>
+    <p class="lead">Familiar, rom&aacute;ntico, gastron&oacute;mico, aventura, explorador, mochilero, premium, ejecutivo y personalizado mediante IA.</p>
+    <div class="nav"><span>Segmentaci&oacute;n emocional</span><span class="page-no">06 / 22</span></div>
+  </div>
+</section>
+
+<section class="slide photo">
+  <img class="bgimg" src="ruta-del-explorador.png" alt="">
+  <div class="veil"></div>
+  <div class="slide-body" style="max-width:640px">
+    <div class="eyebrow">Ruta del Explorador I</div>
+    <h2>La ciudad que no aparece en el primer resultado.</h2>
+    <p class="lead">Hostels, transporte p&uacute;blico, comida local, museos gratuitos, miradores, mercados y joyas ocultas: viajes aut&eacute;nticos para quienes quieren descubrir m&aacute;s con menos.</p>
+  </div>
+  <div class="nav"><span>Exploraci&oacute;n aut&eacute;ntica</span><span class="page-no">07 / 22</span></div>
+</section>
+
+<section class="slide">
+  <div class="slide-body">
+    <div class="kicker">Ruta del Explorador II</div>
+    <h2>Dise&ntilde;ada para vivir el destino, no solo visitarlo.</h2>
+    <div class="grid cols4" style="margin-top:36px">
+      <div class="card"><h3>Hostels</h3><p class="caption">Hospedajes sociales, seguros y bien ubicados.</p></div>
+      <div class="card"><h3>Transporte p&uacute;blico</h3><p class="caption">Rutas locales con tiempos y costos claros.</p></div>
+      <div class="card"><h3>Comida local</h3><p class="caption">Mercados, puestos y restaurantes aut&eacute;nticos.</p></div>
+      <div class="card"><h3>Miradores</h3><p class="caption">Vistas memorables fuera del circuito obvio.</p></div>
+      <div class="card"><h3>Museos gratuitos</h3><p class="caption">Cultura sin romper el presupuesto.</p></div>
+      <div class="card"><h3>Mercados</h3><p class="caption">Ritmo, color, conversaci&oacute;n y descubrimiento.</p></div>
+      <div class="card"><h3>Joyas ocultas</h3><p class="caption">Lugares que hacen que el viaje se sienta propio.</p></div>
+      <div class="card"><h3>Experiencias reales</h3><p class="caption">Menos turismo autom&aacute;tico. M&aacute;s memoria.</p></div>
+    </div>
+  </div>
+  <div class="nav"><span>Producto experiencial</span><span class="page-no">08 / 22</span></div>
+</section>
+
+<section class="slide photo">
+  <img class="bgimg" src="joyas-ocultas.png" alt="">
+  <div class="veil bottom"></div>
+  <div class="slide-end">
+    <div class="compare">
+      <div><div class="eyebrow">Turismo tradicional</div><h2>Lo famoso.</h2><p>El mismo lugar, la misma foto, la misma multitud.</p></div>
+      <div><div class="eyebrow">BG Travel Explorer</div><h2>Lo memorable.</h2><p>El rinc&oacute;n secreto que convierte un itinerario en una historia personal.</p></div>
+    </div>
+    <div class="nav"><span>Joyas Ocultas</span><span class="page-no">09 / 22</span></div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="slide-body">
+    <div class="story">
+      <div>
+        <div class="kicker">La conversaci&oacute;n con la IA</div>
+        <h2>La planificaci&oacute;n empieza hablando como una persona.</h2>
+        <p class="lead">&ldquo;Tengo cinco d&iacute;as. Viajo con mi hija. Mi presupuesto es 900 d&oacute;lares. Quiero evitar multitudes.&rdquo;</p>
+        <p>La IA transforma esas se&ntilde;ales en un itinerario claro, emocional y cotizable.</p>
+      </div>
+      <div class="phone">
+        <div class="screen">
+          <div class="bubble user">Tengo cinco d&iacute;as.</div>
+          <div class="bubble user">Viajo con mi hija.</div>
+          <div class="bubble user">Mi presupuesto es 900 d&oacute;lares.</div>
+          <div class="bubble user">Quiero evitar multitudes.</div>
+          <div class="bubble ai">Perfecto. Te propongo una ruta equilibrada, segura y memorable.</div>
+          <div class="itinerary"><b>Itinerario inteligente</b><br><span class="tiny">D&iacute;a 1 &middot; llegada suave<br>D&iacute;a 2 &middot; barrio local<br>D&iacute;a 3 &middot; naturaleza<br>D&iacute;a 4 &middot; joya oculta<br>D&iacute;a 5 &middot; recuerdo final</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="nav"><span>Interfaz conversacional</span><span class="page-no">10 / 22</span></div>
+</section>
+
+<section class="slide soft">
+  <div class="slide-body">
+    <div class="kicker">C&oacute;mo funciona</div>
+    <h2>Del sue&ntilde;o al recuerdo, sin fricci&oacute;n.</h2>
+    <div class="flow">
+      <span class="step">Sue&ntilde;o</span><span class="arrow">&rarr;</span>
+      <span class="step">Conversaci&oacute;n</span><span class="arrow">&rarr;</span>
+      <span class="step">IA</span><span class="arrow">&rarr;</span>
+      <span class="step">Experiencias</span><span class="arrow">&rarr;</span>
+      <span class="step">Itinerario</span><span class="arrow">&rarr;</span>
+      <span class="step">Cotizaci&oacute;n</span><span class="arrow">&rarr;</span>
+      <span class="step">Reserva</span><span class="arrow">&rarr;</span>
+      <span class="step">Viaje</span><span class="arrow">&rarr;</span>
+      <span class="step">Recuerdos</span>
+    </div>
+    <p class="quote" style="margin-top:55px">Una arquitectura dise&ntilde;ada para reducir incertidumbre y aumentar deseo.</p>
+  </div>
+  <div class="nav"><span>Flujo de valor</span><span class="page-no">11 / 22</span></div>
+</section>
+
+<section class="slide photo">
+  <img class="bgimg" src="mapa-inteligente-3d.png" alt="">
+  <div class="veil"></div>
+  <div class="slide-body" style="max-width:600px">
+    <div class="eyebrow">Mapa Inteligente</div>
+    <h2>Un mapa que piensa con el viajero.</h2>
+    <p class="lead">Rutas, tiempos, costos, lugares ocultos, clima, fotograf&iacute;a y restaurantes conectados en una sola capa de decisi&oacute;n.</p>
+  </div>
+  <div class="nav"><span>Inteligencia geoespacial</span><span class="page-no">12 / 22</span></div>
+</section>
+
+<section class="slide dark">
+  <div class="slide-body">
+    <div class="kicker">Tecnolog&iacute;a</div>
+    <h2>Una plataforma moderna, modular y escalable.</h2>
+    <div class="tech">
+      <div class="node">Next.js<br><span class="tiny">Frontend</span></div>
+      <div class="node">FastAPI<br><span class="tiny">Backend</span></div>
+      <div class="node">OpenAI<br><span class="tiny">IA</span></div>
+      <div class="node">RAG<br><span class="tiny">Conocimiento</span></div>
+      <div class="node">NotebookLM<br><span class="tiny">Investigaci&oacute;n</span></div>
+      <div class="node">Google Maps<br><span class="tiny">Mapas</span></div>
+      <div class="node">OpenWeather<br><span class="tiny">Clima</span></div>
+      <div class="node">Amadeus<br><span class="tiny">Travel APIs</span></div>
+      <div class="node">PostgreSQL<br><span class="tiny">Datos</span></div>
+      <div class="node">pgvector<br><span class="tiny">Memoria sem&aacute;ntica</span></div>
+      <div class="node">UX Layer<br><span class="tiny">Experiencia</span></div>
+      <div class="node">Analytics<br><span class="tiny">Conversi&oacute;n</span></div>
+    </div>
+  </div>
+  <div class="nav"><span>Stack tecnol&oacute;gico</span><span class="page-no">13 / 22</span></div>
+</section>
+
+<section class="slide">
+  <div class="slide-body">
+    <div class="kicker">Arquitectura</div>
+    <h2>La IA conversa con conocimiento, datos y APIs en tiempo real.</h2>
+    <div class="arch">
+      <div class="hub"><div><b>BG Travel<br>AI Core</b><br><span class="tiny white">Orquestaci&oacute;n inteligente</span></div></div>
+      <div class="sat s1">Usuario<br><span class="tiny">Preferencias y contexto</span></div>
+      <div class="sat s2">APIs Travel<br><span class="tiny">Vuelos, clima, mapas</span></div>
+      <div class="sat s3">Base de conocimiento<br><span class="tiny">Destinos y experiencias</span></div>
+      <div class="sat s4">Motor de cotizaci&oacute;n<br><span class="tiny">Precio y reserva</span></div>
+      <div class="sat s5">RAG + Vector DB<br><span class="tiny">Memoria sem&aacute;ntica</span></div>
+      <div class="sat s6">Analytics<br><span class="tiny">Aprendizaje continuo</span></div>
+    </div>
+  </div>
+  <div class="nav"><span>Arquitectura de alto nivel</span><span class="page-no">14 / 22</span></div>
+</section>
+
+<section class="slide soft">
+  <div class="slide-body">
+    <div class="kicker">Beneficios para el viajero</div>
+    <h2>Menos tiempo investigando. M&aacute;s tiempo viviendo.</h2>
+    <div class="grid cols3" style="margin-top:40px">
+      <div class="card"><h3>Personalizaci&oacute;n real</h3><p>Viajes dise&ntilde;ados por compa&ntilde;&iacute;a, presupuesto, ritmo, gustos y contexto.</p></div>
+      <div class="card"><h3>Claridad inmediata</h3><p>De miles de opciones a un plan entendible, emocional y accionable.</p></div>
+      <div class="card"><h3>Descubrimiento</h3><p>No solo &ldquo;qu&eacute; ver&rdquo;, sino qu&eacute; recordar.</p></div>
+    </div>
+  </div>
+  <div class="nav"><span>Valor para usuario</span><span class="page-no">15 / 22</span></div>
+</section>
+
+<section class="slide blue">
+  <div class="slide-body">
+    <div class="kicker">Beneficios para BG Travel</div>
+    <h2>Una nueva forma de convertir inspiraci&oacute;n en negocio.</h2>
+    <div class="grid cols3" style="margin-top:40px">
+      <div class="card"><div class="metric">&uarr;</div><h3>Mayor conversi&oacute;n</h3><p>El usuario llega con una ruta deseada, no con dudas dispersas.</p></div>
+      <div class="card"><div class="metric">$</div><h3>Mayor ticket promedio</h3><p>La experiencia se empaqueta con m&aacute;s valor percibido.</p></div>
+      <div class="card"><div class="metric">&#9733;</div><h3>Diferenciaci&oacute;n</h3><p>BG Travel se posiciona como pionera, no como intermediaria.</p></div>
+    </div>
+  </div>
+  <div class="nav"><span>Valor de negocio</span><span class="page-no">16 / 22</span></div>
+</section>
+
+<section class="slide">
+  <div class="slide-body">
+    <div class="kicker">Escalabilidad</div>
+    <h2>De producto diferencial a plataforma SaaS para agencias.</h2>
+    <p class="lead">BG Travel Explorer puede comenzar como ventaja propia y evolucionar hacia una nueva l&iacute;nea de negocio: inteligencia tur&iacute;stica como servicio.</p>
+    <div class="grid cols3" style="margin-top:36px">
+      <div class="card"><h3>Producto interno</h3><p>Mejora conversi&oacute;n y experiencia BG.</p></div>
+      <div class="card"><h3>Plataforma modular</h3><p>Se conecta con inventario, APIs y CRM.</p></div>
+      <div class="card"><h3>SaaS internacional</h3><p>Agencias externas usan la tecnolog&iacute;a bajo modelo escalable.</p></div>
+    </div>
+  </div>
+  <div class="nav"><span>Expansi&oacute;n</span><span class="page-no">17 / 22</span></div>
+</section>
+
+<section class="slide soft">
+  <div class="slide-body">
+    <div class="kicker">Roadmap</div>
+    <h2>Una ruta clara hacia el liderazgo.</h2>
+    <div class="timeline">
+      <div class="phase"><b>Fase 1</b><h3>MVP</h3><p class="tiny">Experiencia conversacional inicial.</p></div>
+      <div class="phase"><b>Fase 2</b><h3>Amadeus</h3><p class="tiny">Integraci&oacute;n de vuelos y cotizaci&oacute;n.</p></div>
+      <div class="phase"><b>Fase 3</b><h3>IA avanzada</h3><p class="tiny">RAG, memoria y recomendaciones.</p></div>
+      <div class="phase"><b>Fase 4</b><h3>App m&oacute;vil</h3><p class="tiny">Acompa&ntilde;amiento durante el viaje.</p></div>
+      <div class="phase"><b>Fase 5</b><h3>Marketplace</h3><p class="tiny">Experiencias y proveedores.</p></div>
+      <div class="phase"><b>Fase 6</b><h3>SaaS global</h3><p class="tiny">Expansi&oacute;n internacional.</p></div>
+    </div>
+  </div>
+  <div class="nav"><span>Roadmap</span><span class="page-no">18 / 22</span></div>
+</section>
+
+<section class="slide">
+  <div class="slide-body">
+    <div class="kicker">Modelo de experiencia</div>
+    <h2>Un producto que une emoci&oacute;n, inteligencia y compra.</h2>
+    <div class="grid cols3" style="margin-top:42px">
+      <div class="card"><h3>Inspirar</h3><p>Descubrir posibilidades ajustadas al deseo real del viajero.</p></div>
+      <div class="card"><h3>Dise&ntilde;ar</h3><p>Convertir restricciones en una ruta memorable y viable.</p></div>
+      <div class="card"><h3>Activar</h3><p>Cotizar, reservar y acompa&ntilde;ar la experiencia completa.</p></div>
+    </div>
+    <p class="quote" style="margin-top:44px">La interfaz no vende paquetes. Dise&ntilde;a decisiones.</p>
+  </div>
+  <div class="nav"><span>Experience model</span><span class="page-no">19 / 22</span></div>
+</section>
+
+<section class="slide dark">
+  <div class="orb one"></div>
+  <div class="slide-body">
+    <div class="kicker">Ecosistema futuro</div>
+    <h2>BG Travel Explorer puede convertirse en la capa inteligente de toda la operaci&oacute;n tur&iacute;stica.</h2>
+    <div class="grid cols4" style="margin-top:36px">
+      <div class="card">CRM inteligente</div>
+      <div class="card">Marketplace de experiencias</div>
+      <div class="card">App m&oacute;vil del viajero</div>
+      <div class="card">Panel para asesores</div>
+      <div class="card">SaaS para agencias</div>
+      <div class="card">Recomendaci&oacute;n contextual</div>
+      <div class="card">Optimizaci&oacute;n de margen</div>
+      <div class="card">Memoria de preferencias</div>
+    </div>
+  </div>
+  <div class="nav"><span>Plataforma</span><span class="page-no">20 / 22</span></div>
+</section>
+
+<section class="slide">
+  <div class="slide-center fullcenter">
+    <div class="kicker">Visi&oacute;n</div>
+    <p class="bigline">BG Travel dejar&aacute; de vender viajes.</p>
+    <p class="bigline gold">Comenzar&aacute; a crear recuerdos.</p>
+  </div>
+  <div class="nav"><span>Visi&oacute;n estrat&eacute;gica</span><span class="page-no">21 / 22</span></div>
+</section>
+
+<section class="slide photo">
+  <img class="bgimg" src="cierre-planeta-tierra.png" alt="">
+  <div class="veil bottom"></div>
+  <div class="slide-center">
+    <p class="quote" style="max-width:900px">&ldquo;No vendemos destinos.<br>Creamos experiencias que las personas recordar&aacute;n toda su vida.&rdquo;</p>
+    <div style="margin-top:52px;display:flex;align-items:center;gap:22px;justify-content:center;flex-wrap:wrap">
+      <div class="logo white"><img src="bg-travel-logo.png" alt="">BG TRAVEL EXPLORER</div>
+      <div class="kreo-mark"><img src="sello-naranja.png" alt=""><span>KREO IA Studio<br>kreoia.site</span></div>
+    </div>
+  </div>
+  <div class="nav"><span>Cierre</span><span class="page-no">22 / 22</span></div>
+</section>
+
+</main></body></html>

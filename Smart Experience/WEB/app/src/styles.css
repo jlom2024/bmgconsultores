@@ -1,0 +1,148 @@
+/* BG Travel Peru Smart Experience — Brand Theme */
+@layer reset, theme, base, components, utilities;
+
+@import "tailwindcss" source(none);
+@source "../src";
+
+@import "tw-animate-css";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --spacing: 0.25rem;
+
+  /* Brand palette */
+  --color-bg-navy: #0F172A;
+  --color-bg-surface: #1A2332;
+  --color-bg-card: #1E293B;
+  --color-amber: #D97706;
+  --color-amber-light: #F59E0B;
+  --color-cyan-accent: #0891B2;
+  --color-text-primary: #E2E8F0;
+  --color-text-secondary: #94A3B8;
+  --color-text-muted: #64748B;
+  --color-border: #1E293B;
+  --color-border-light: #334155;
+
+  /* Typography */
+  --font-display: "Cabinet Grotesk", "Inter", sans-serif;
+  --font-body: "Inter Tight", "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+/* Fonts via Google Fonts / CDN */
+@font-face {
+  font-family: "Cabinet Grotesk";
+  src: url("https://fonts.cdnfonts.com/s/101090/CabinetGrotesk-Black.woff2") format("woff2");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Cabinet Grotesk";
+  src: url("https://fonts.cdnfonts.com/s/101090/CabinetGrotesk-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Cabinet Grotesk";
+  src: url("https://fonts.cdnfonts.com/s/101090/CabinetGrotesk-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Inter Tight";
+  src: url("https://fonts.cdnfonts.com/s/105566/InterTight-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Inter Tight";
+  src: url("https://fonts.cdnfonts.com/s/105566/InterTight-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("https://fonts.cdnfonts.com/s/20593/JetBrainsMono-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Base layer */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    color-scheme: dark;
+  }
+  body {
+    background-color: var(--color-bg-navy);
+    color: var(--color-text-primary);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  ::selection {
+    background-color: var(--color-amber);
+    color: var(--color-bg-navy);
+  }
+}
+
+/* Utility classes */
+@layer utilities {
+  .text-display {
+    font-family: var(--font-display);
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+  .text-body {
+    font-family: var(--font-body);
+  }
+  .text-mono {
+    font-family: var(--font-mono);
+  }
+  .section-padding {
+    padding: 5rem 1.5rem;
+  }
+  @media (min-width: 768px) {
+    .section-padding {
+      padding: 7rem 2rem;
+    }
+  }
+  .max-w-content {
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(217, 119, 6, 0.2); }
+  50% { box-shadow: 0 0 40px rgba(217, 119, 6, 0.4); }
+}
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

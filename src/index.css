@@ -1,0 +1,250 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap");
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+==========================================================================
+【AI HANDOVER NOTE】
+1. DESIGN PHILOSOPHY:
+   - Core design philosophy: Luxury Corporate with Modular Service Architecture. This is a high-variance (VARIANCE: HIGH) design that balances professional authority with bold visual confidence, reflecting BMG Consultores' multi-platform expertise across six distinct service verticals.
+   - Visual style: Metallic Sophistication meets Neo-Bento. We employ a physicality-driven approach with rim-light effects on service cards, subtle ambient occlusion for depth, and a crown-inspired geometric accent system that echoes the brand's regal logo. Each service tab gets its own color identity while maintaining cohesive brand unity through the golden thread.
+   - Rationale: A Peruvian consultancy serving government contracts (BG Gestores) and diverse business needs requires gravitas and trustworthiness, but the multi-service model demands visual differentiation. The metallic gold (#C6A43B reference) becomes our brand anchor, elevated through OKLCH precision to work across light/dark modes while maintaining that premium feel. The modular card system allows each service (Travel/Emprendedor/Contable/Jurídico/Publicidad/Gestores) to breathe independently while the golden accents unify the experience.
+
+2. TYPOGRAPHY:
+   - Sans choice: Montserrat was selected for its geometric precision and bold weight range (400-800), mirroring the geometric crown logo and providing the authoritative sans-serif presence seen in the reference. Its Latin Extended character set ensures perfect Spanish language support. The geometric letterforms convey modern professionalism while the heavier weights (700-800) deliver the confidence needed for corporate credibility.
+   - Display font: Cormorant Garamond serves as the editorial serif for hero sections and service introductions, adding a touch of elegance and sophistication that elevates the brand above typical consultancy websites. This serif/sans contrast creates visual hierarchy and editorial quality.
+   - Mono purpose: JetBrains Mono handles contact information (email, WhatsApp), data displays, and any technical/legal text blocks, ensuring clarity in critical communication touchpoints.
+
+3. COLOR SYSTEM:
+   - Brand primary: Hue 45° (golden amber) derived directly from the #C6A43B metallic gold in the logo. This warm, prestigious hue anchors the entire palette and maps to --primary. Unlike the reflexive violet/indigo AI default, this golden direction communicates wealth, achievement, and Peruvian cultural richness (gold has deep historical significance in Peru).
+   - Color relationships: --primary (gold H:45) and --accent (warm amber H:38) use a single-hue progression strategy—same family, differentiated by chroma and lightness for maximum refinement. --ring also carries the golden hue for focus states, creating a cohesive interaction layer.
+   - Semantic colors: --destructive uses H:15 (warm red-orange, not harsh red) for gentle warnings; --success employs H:150 (emerald green, matching BG Contable's service color); --warning sits at H:50 (golden-orange, harmonizing with the brand gold).
+   - Service color strategy: While the design tokens provide the foundation, the six service colors (purple/orange/green/red/magenta/cyan from the reference) will be implemented as CSS custom properties in the layout layer, each tinted with a trace of the golden hue (H:45) to maintain family cohesion.
+   - Neutral system: All neutrals (background/card/muted/border) carry a subtle golden tint (C≈0.01-0.015) rather than pure gray, creating a warm, inviting atmosphere that feels premium rather than sterile. This brand-tinted approach ensures the entire interface feels intentionally designed.
+
+4. USAGE GUIDE:
+   - Layout type: Full-width dashboard with tabbed service navigation. Hero section spans full viewport, service cards use Bento grid (3-column on desktop, stacking on mobile). Each service tab triggers a smooth transition to its dedicated section with color-coded accents.
+   - Recommended effects: Apply backdrop-blur (blur-xl) to navigation and floating contact CTAs (WhatsApp/email). Use rim-light technique on service cards (subtle inset shadow + border-t with golden glow). Implement gentle hover states with scale transforms (scale-105) and golden ring focus states. Animations should be smooth (duration-300 to duration-500) with ease-out timing.
+   - Contact integration: Sticky WhatsApp button (bottom-right, golden with pulse animation) and email form modal (glassmorphic overlay). Both use --primary for CTA emphasis.
+   - Mobile-first: All spacing uses fluid typography (clamp), cards stack gracefully, touch targets minimum 44px. Service tabs become horizontal scroll on mobile with snap-scroll behavior.
+   - Dark mode strategy: Dark mode uses deeper backgrounds (L<0.15) with reduced chroma on large surfaces, but keeps the golden primary vibrant (higher chroma) for wayfinding. Service color accents remain saturated in dark mode for clear differentiation.
+   - Project-specific rules: The crown motif from the logo should inspire decorative elements (corner accents, dividers). Spanish copy requires proper line-height (1.6-1.8) for readability. Government/legal content (BG Gestores, BG Jurídico) needs higher contrast and larger base font size (16px minimum).
+==========================================================================
+*/
+
+:root {
+  /* Typography */
+  --font-sans: "Montserrat", system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, "Cascadia Code", monospace;
+
+  /* Radius */
+  --radius: 0.75rem;
+
+  /* ===== Brand palette — Azul Marino + Celeste ===== */
+  --brand-navy: #082B3A;
+  --brand-petroleum: #124E68;
+  --brand-sky: #4E9FC2;
+  --brand-gold: #D6A83F;
+  --brand-beige: #BD844B;
+  --brand-ivory: #F5F1E8;
+  --brand-smoke: #D9E5EA;
+
+  /* Core UI Tokens — BMG Dark (Azul Marino) es el tema por defecto */
+  --background: #082B3A;
+  --foreground: #FFFFFF;
+  --card: #0C3748;
+  --card-foreground: #FFFFFF;
+  --popover: #082B3A;
+  --popover-foreground: #FFFFFF;
+  --primary: #4E9FC2;
+  --primary-foreground: #FFFFFF;
+  --secondary: #124E68;
+  --secondary-foreground: #D9E5EA;
+  --muted: #0E3344;
+  --muted-foreground: #D9E5EA;
+  --accent: #4E9FC2;
+  --accent-foreground: #FFFFFF;
+  --destructive: #B04A3F;
+  --destructive-foreground: #FFFFFF;
+  --border: #124E68;
+  --input: #0E3344;
+  --ring: #4E9FC2;
+
+  /* Chart Tokens */
+  --chart-1: oklch(0.65 0.2 45);
+  --chart-2: oklch(0.62 0.18 150);
+  --chart-3: oklch(0.58 0.22 280);
+  --chart-4: oklch(0.63 0.21 15);
+  --chart-5: oklch(0.6 0.19 190);
+
+  /* Sidebar Tokens */
+  --sidebar: oklch(0.1 0.018 45);
+  --sidebar-foreground: oklch(0.85 0.01 45);
+  --sidebar-primary: oklch(0.68 0.16 45);
+  --sidebar-primary-foreground: oklch(0.12 0.015 45);
+  --sidebar-accent: oklch(0.45 0.12 38);
+  --sidebar-accent-foreground: oklch(0.92 0.008 45);
+  --sidebar-border: oklch(0.24 0.028 45);
+  --sidebar-ring: oklch(0.65 0.18 45);
+}
+
+.dark {
+  --background: #082B3A;
+  --foreground: #FFFFFF;
+  --card: #0C3748;
+  --card-foreground: #FFFFFF;
+  --popover: #082B3A;
+  --popover-foreground: #FFFFFF;
+  --primary: #4E9FC2;
+  --primary-foreground: #FFFFFF;
+  --secondary: #124E68;
+  --secondary-foreground: #D9E5EA;
+  --muted: #0E3344;
+  --muted-foreground: #D9E5EA;
+  --accent: #4E9FC2;
+  --accent-foreground: #FFFFFF;
+  --destructive: #B04A3F;
+  --destructive-foreground: #FFFFFF;
+  --border: #124E68;
+  --input: #0E3344;
+  --ring: #4E9FC2;
+
+  /* Chart Tokens */
+  --chart-1: oklch(0.65 0.2 45);
+  --chart-2: oklch(0.62 0.18 150);
+  --chart-3: oklch(0.58 0.22 280);
+  --chart-4: oklch(0.63 0.21 15);
+  --chart-5: oklch(0.6 0.19 190);
+
+  /* Sidebar Tokens */
+  --sidebar: oklch(0.1 0.018 45);
+  --sidebar-foreground: oklch(0.85 0.01 45);
+  --sidebar-primary: oklch(0.68 0.16 45);
+  --sidebar-primary-foreground: oklch(0.12 0.015 45);
+  --sidebar-accent: oklch(0.45 0.12 38);
+  --sidebar-accent-foreground: oklch(0.92 0.008 45);
+  --sidebar-border: oklch(0.24 0.028 45);
+  --sidebar-ring: oklch(0.65 0.18 45);
+}
+
+@theme inline {
+  /* Shadcn Core Mapping */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Brand palette utilities */
+  --color-brand-navy: var(--brand-navy);
+  --color-brand-petroleum: var(--brand-petroleum);
+  --color-brand-sky: var(--brand-sky);
+  --color-brand-gold: var(--brand-gold);
+  --color-brand-beige: var(--brand-beige);
+  --color-brand-ivory: var(--brand-ivory);
+  --color-brand-smoke: var(--brand-smoke);
+
+  /* Charts Mapping */
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  /* Sidebar Mapping */
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Typography */
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+
+  /* Radius */
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    @apply scroll-smooth antialiased;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans min-h-screen;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold tracking-tight;
+  }
+
+  code, pre {
+    @apply font-mono;
+  }
+
+  ::selection {
+    @apply bg-primary/20 text-primary;
+  }
+
+/* Service logos: unificarlos a la paleta (azul marino + celeste) */
+.service-logo-tint {
+  filter: grayscale(0.8) sepia(0.25) saturate(2.6) hue-rotate(178deg) brightness(0.95);
+}
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-muted-foreground/20 rounded-full hover:bg-muted-foreground/40;
+  }
+}
+
+/* ===== Lemon Slice Widget: forzar fixed bottom-right en todos los viewports ===== */
+lemon-slice-widget,
+lemon-slice-widget *,
+#lemon-slice-root,
+[id^="lemon-slice"] {
+  position: fixed !important;
+  bottom: 1.5rem !important;
+  right: 1.5rem !important;
+  left: auto !important;
+  top: auto !important;
+  z-index: 9999 !important;
+  max-width: 260px !important;
+  max-height: 400px !important;
+  pointer-events: auto !important;
+  transform: none !important;
+  margin: 0 !important;
+}
