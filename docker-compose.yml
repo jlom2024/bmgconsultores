@@ -1,0 +1,22 @@
+version: "3.8"
+
+services:
+  bmg-consultores-web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: bmg-consultores-web:latest
+    container_name: bmg-consultores-web
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8088:80"
+    environment:
+      - VIRTUAL_HOST=bmgconsultores.site,www.bmgconsultores.site
+      - LETSENCRYPT_HOST=bmgconsultores.site,www.bmgconsultores.site
+      - LETSENCRYPT_EMAIL=admin@kreoiastudio.com
+    networks:
+      - traefik-public
+
+networks:
+  traefik-public:
+    external: true

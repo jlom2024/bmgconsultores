@@ -1,5 +1,26 @@
 # Bitácora de Proyecto - BMG Consultores
 
+[2026-11-12 13:46:00] DESPLIEGUE DE CONTENEDOR DOCKER EN VPS KREO:
+ - Servidor VPS: `2.24.72.21` (Ubuntu / Docker 29.5.1).
+ - Directorio en servidor: `/opt/bmg-consultores/`
+ - Contenedor: `bmg-consultores-web` (Nginx Alpine optimizado para SPA).
+ - Red interna: `traefik-public` conectada a `nginx-proxy` y `acme-companion` (SSL automático de Let's Encrypt).
+ - Configuración de Dominio:
+   * `VIRTUAL_HOST=bmgconsultores.site,www.bmgconsultores.site`
+   * `LETSENCRYPT_HOST=bmgconsultores.site,www.bmgconsultores.site`
+   * `LETSENCRYPT_EMAIL=admin@kreoiastudio.com`
+ - Puerto local de verificación: `127.0.0.1:8088 -> 80`
+ - Pruebas verificadas: HTTP 200 OK en raíz (`/`), rutas SPA (`/contable`) y assets estáticos.
+
+
+[2026-11-11 17:17:26] VINCULACIÓN Y PUSH A REPOSITORIO GITHUB:
+ - Repositorio remoto: `https://github.com/jlom2024/bmgconsultores.git`
+ - Rama: `main` (rastreo configurado a `origin/main`).
+ - Commit inicial: `615e41e` (869 archivos, 412,559 inserciones).
+ - Incluye: Código fuente completo (`src/`), recursos multimedia (`public/`), scripts de build/deploy/backup, documentación oficial y último deploy con perfil contable.
+ - Exclusiones configuradas en `.gitignore`: dependencias `node_modules`, builds `dist/`, respaldos `backups/`, `.env` y temporales.
+ - Estado del repositorio: Limpio y sincronizado 1:1 con GitHub (`working tree clean`).
+
 [2026-11-11] GENERACIÓN DE BACKUP INTEGRAL DEL ÚLTIMO DEPLOY EN LOCAL:
  - Ubicación: `Z:\Empresas\BMG Consultores\backups\`
  - Paquetes creados:
