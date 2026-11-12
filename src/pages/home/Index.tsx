@@ -5,6 +5,8 @@ import { services } from "@/data/services";
 import { usePageMeta } from "@/lib/seo";
 import { Mail, Menu, X, ChevronRight, Send, MessageCircle, MapPin, CheckCircle2 } from "lucide-react";
 import Navbar from "@/components/Navbar";
+import ScrollExperienceSection from "@/components/ScrollExperienceSection";
+import PrecalificacionModal from "@/components/PrecalificacionModal";
 
 
 
@@ -808,6 +810,7 @@ const WhatsAppFab = () => (
 /* ========= HOME PAGE ========= */
 export default function Home() {
   const servicesRef = useRef<HTMLDivElement>(null);
+  const [modalPrecalificacionOpen, setModalPrecalificacionOpen] = useState<boolean>(false);
 
   usePageMeta({
     title: "BMG Consultores — Consultoría Multiplataforma Perú",
@@ -844,6 +847,12 @@ export default function Home() {
       <Navbar />
       <Hero onExplore={scrollToServices} />
 
+      {/* Scroll Work: Experiencia Cinemática BMG Consultores */}
+      <ScrollExperienceSection
+        onPrecalificar={() => setModalPrecalificacionOpen(true)}
+        onExplore={scrollToServices}
+      />
+
       {/* Sección corporativa */}
       <AboutSection />
 
@@ -862,6 +871,12 @@ export default function Home() {
       <Contact />
       <Footer />
       <WhatsAppFab />
+
+      {/* Modal Precalificación desde el Scroll Work */}
+      <PrecalificacionModal
+        isOpen={modalPrecalificacionOpen}
+        onClose={() => setModalPrecalificacionOpen(false)}
+      />
     </div>
   );
 }

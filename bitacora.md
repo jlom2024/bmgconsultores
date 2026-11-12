@@ -1,5 +1,21 @@
 # Bitácora de Proyecto - BMG Consultores
 
+[2026-11-12 14:30:00] IMPLEMENTACIÓN DE SCROLL WORK Y CORRECCIÓN POP-UP MODAL:
+ - Pop-up de Precalificación Recortado (PrecalificacionModal.tsx):
+   * Estructura interna fija `max-h-[90vh]` con flex-col.
+   * Cabecera superior fija que nunca se pierde ni corta el título ni el botón `← Volver a la landing`.
+   * Cuerpo central desplazable con scroll interno independiente y opciones compactadas para laptops y monitores con escala.
+   * Pie de acciones anclado al fondo con botones siempre visibles (`← Volver a la landing` y `Continuar a Contacto`).
+ - Scroll Work en Home (ScrollExperienceSection.tsx):
+   * Contenedor sticky scrollytelling de 250vh debajo del Hero.
+   * Scrubbing de video optimizado con `requestAnimationFrame` y curva no-lineal para acelerar y dinamizar el giro de cámara.
+   * Efectos 3D durante el giro (perspectiva, rotación sutil en Y, iluminación radial dorada sobre el logo final de BMG).
+   * 3 capas narrativas con tipografía serif de alta dirección sincronizadas con el progreso del scroll.
+   * Archivo de video web optimizado con Faststart en `public/videos/bmg-experience.mp4` (963 KB).
+ - Verificación en vivo:
+   * Home: http://2.24.72.21/ (HTTP 200 OK)
+   * Video Web: http://2.24.72.21/videos/bmg-experience.mp4 (HTTP 200 OK)
+
 [2026-11-12 13:54:00] HABILITACIÓN DE PREVIEW PÚBLICA EN INTERNET:
  - Enrutamiento directo por IP pública: Vinculada la IP `2.24.72.21` en `VIRTUAL_HOST` del contenedor `bmg-consultores-web`.
  - Acceso inmediato en navegador (sin necesidad de hosts ni DNS aún):
