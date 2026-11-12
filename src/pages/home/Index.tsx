@@ -580,9 +580,13 @@ const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const waMsg = encodeURIComponent(
-      `Hola BMG Consultores! Soy ${form.name}.\nEmail: ${form.email}\nServicio: ${form.service}\n\n${form.message}`
-    );
+    const waText = `*📩 NUEVA CONSULTA WEB (BMG CONSULTORES)*\n\n` +
+      `Hola Blanca, te escribo desde el formulario de contacto de la web:\n\n` +
+      `👤 *Nombre:* ${form.name}\n` +
+      `✉️ *Email:* ${form.email}\n` +
+      `💼 *Servicio de Interés:* ${form.service || "General / Multidisciplinario"}\n\n` +
+      `💬 *Mensaje:* \n${form.message || "Solicito información comercial y asesoría personalizada."}`;
+    const waMsg = encodeURIComponent(waText);
     window.open(`https://wa.me/51994118084?text=${waMsg}`, "_blank");
     setSent(true);
     setTimeout(() => setSent(false), 4000);

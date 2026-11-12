@@ -1,5 +1,33 @@
 # Bitácora de Proyecto - BMG Consultores
 
+[2026-11-12 18:58:00] INTEGRACIÓN INTEGRAL DE LEADS A WHATSAPP DE BLANCA (+51 994 118 084):
+ - Enriquecimiento Estructurado del Pop-up de Estrategia Premium (PrecalificacionModal.tsx):
+   * Confección de plantilla ejecutiva completa para WhatsApp con todas las variables capturadas: Nombre, Empresa/Proyecto, WhatsApp del prospecto, Correo, Facturación/Capital, Naturaleza de la consulta y Presupuesto asignado.
+   * Lead Premium Calificado: Redirige a Blanca con encabezado `🔥 SOLICITUD DE SESIÓN ESTRATÉGICA CON LA CEO (BMG CONSULTORES)` y credencial de Alta Dirección.
+   * Lead Operativo / Estándar: Redirige con encabezado `📋 SOLICITUD DE CONSULTORÍA CORPORATIVA (BMG CONSULTORES)` con la ficha íntegra para asignación en mesa de entrada.
+ - Formulario de Contacto al Pie del Home (src/pages/home/Index.tsx):
+   * Reestructurado el mensaje automático con encabezado `📩 NUEVA CONSULTA WEB (BMG CONSULTORES)`, enviando a Blanca nombre, correo, servicio de interés y cuerpo del mensaje del solicitante.
+ - Despliegue en Producción y Verificación Multicapa:
+   * Bundle Vite compilado: `index-B3UTWJb_.js` y `index-D5gtz5BP.css`.
+   * Contenedor Docker en VPS (`2.24.72.21`) actualizado y verificado en vivo con HTTP 200 OK.
+   * Git, Brain y Local sincronizados.
+
+[2026-11-12 18:45:00] OPTIMIZACIÓN RADICAL DE FLUIDEZ RESPONSIVA EN SCROLL WORK (MÓVIL):
+ - Re-codificación de Video Web de Alta Densidad de Keyframes (`public/videos/bmg-experience.mp4`):
+   * Estructura GOP Forzada: Generados 60 fotogramas clave I-frame (1 cada 4 fotogramas = 6 keyframes/segundo).
+   * Eliminación Total de B-Frames (`bframes=0`): Suprimida la decodificación bidireccional que saturaba los decodificadores de hardware móvil al desplazarse con el pulgar.
+   * Tamaño Optimizado: 3.23 MB con Faststart (`moov` en cabecera) y compresión CRF 24 en 720p HD.
+ - Reingeniería del Motor de Scrubbing React (`ScrollExperienceSection.tsx`):
+   * Cola de Decodificación Basada en Eventos (`seeked`): Se sustituyó el spam continuo de `video.currentTime` por un despachador no bloqueante que espera el evento `seeked` del navegador móvil antes de enviar el siguiente frame objetivo.
+   * Soporte Nativo de `fastSeek`: Integrado para WebKit / iOS Safari y navegadores Chromium en Android cuando está disponible.
+   * Resorte Cinemático Adaptativo: En móvil utiliza `stiffness: 180, damping: 26, mass: 0.1` para un acoplamiento instantáneo y táctil con el pulgar; en desktop mantiene `stiffness: 120, damping: 22` para una inercia fluida con rueda o trackpad.
+   * Desactivación de Transformaciones de Perspectiva 3D en Móvil: El contenedor de video en móviles evita la rotación en perspectiva GPU (`rotateY`), evitando la pérdida de tasa de refresco (60-120 FPS estables).
+   * Altura Proporcional en Móvil: Ajustada la sección a `h-[190vh]` en pantallas pequeñas y `h-[250vh]` en desktop, reduciendo la fricción de scroll a ~2 deslizamientos naturales.
+ - Despliegue y Sincronización Multicapa:
+   * Build Vite: bundle `index-QTJyWZIa.js` y `index-BPfxH0OG.css`.
+   * Contenedor Docker en VPS (`2.24.72.21`) actualizado y verificado en vivo.
+   * Git, Brain y Local sincronizados.
+
 [2026-11-12 16:10:00] DESPLIEGUE EN PRODUCCIÓN DE REINGENIERÍA VISUAL Y BLINDAJE DE MODAL:
  - Blindaje Responsivo de Pop-up Modal (PrecalificacionModal.tsx):
    * Ajuste de altura dinámica a `max-h-[88vh] my-auto` con padding adaptable `p-2 sm:p-4`.

@@ -76,13 +76,51 @@ export default function PrecalificacionModal({ isOpen, onClose }: Precalificacio
     }, 1200);
   };
 
-  // Enlace para el Caso A: Alerta push a la CEO sin exponer datos sensibles del lead en público
-  const pushTextCEO = encodeURIComponent("🔥 LEAD PREMIUM CALIFICADO: Un cliente corporativo ha agendado una cita directa contigo para inversión/holding.");
-  const ceoWhatsAppUrl = `https://wa.me/51994118084?text=${pushTextCEO}`;
+  // Diccionario de etiquetas legibles para el reporte ejecutivo
+  const facturacionLabels: Record<string, string> = {
+    menos_20k: "Menos de S/ 20,000 mensuales",
+    "20k_100k": "Entre S/ 20,000 y S/ 100,000 mensuales",
+    mas_100k: "Más de S/ 100,000 / Fondos Internacionales",
+  };
 
-  // Enlace para el Caso B: Front desk centralizado
-  const frontDeskText = encodeURIComponent(`Hola, completé el formulario de precalificación en la web de BMG Consultores.\nNombre: ${nombre || "Interesado"}\nEmpresa: ${empresa || "Consulta corporativa"}\nSolicito atención con un consultor senior.`);
-  const frontDeskWhatsAppUrl = `https://wa.me/51994118084?text=${frontDeskText}`;
+  const naturalezaLabels: Record<string, string> = {
+    holdings: "Estructuración de Holdings / Optimización Fiscal Compleja",
+    importacion: "Importaciones / Cadenas de Suministro Globales",
+    inmobiliaria: "Inversiones Inmobiliarias / Saneamiento / Fondeo",
+    operativa: "Consultas Operativas (Constitución básica, contabilidad)",
+  };
+
+  const presupuestoLabels: Record<string, string> = {
+    pyme: "Presupuesto de entrada / PYME",
+    corporativo: "Presupuesto Corporativo / Inversor de Capital",
+  };
+
+  // Enlace para el Caso A: Lead Premium Calificado directo a la CEO (Blanca Gutiérrez) con ficha completa
+  const textCEO = `*🔥 SOLICITUD DE SESIÓN ESTRATÉGICA CON LA CEO (BMG CONSULTORES)*\n\n` +
+    `Hola Blanca, completé el formulario de precalificación corporativa en la web:\n\n` +
+    `👤 *Nombre:* ${nombre || "No especificado"}\n` +
+    `🏢 *Empresa / Proyecto:* ${empresa || "No especificado"}\n` +
+    `📱 *WhatsApp:* ${telefono || "No especificado"}\n` +
+    `✉️ *Email:* ${email || "No especificado"}\n\n` +
+    `📊 *Facturación / Capital:* ${facturacionLabels[facturacion] || facturacion || "No especificado"}\n` +
+    `🎯 *Naturaleza de la Consulta:* ${naturalezaLabels[naturaleza] || naturaleza || "No especificado"}\n` +
+    `💰 *Presupuesto Asignado:* ${presupuestoLabels[presupuesto] || presupuesto || "No especificado"}\n\n` +
+    `👑 *Calificación:* LEAD PREMIUM CALIFICADO (Acceso a Alta Dirección)\n\n` +
+    `Solicito agendar la sesión estratégica privada.`;
+  const ceoWhatsAppUrl = `https://wa.me/51994118084?text=${encodeURIComponent(textCEO)}`;
+
+  // Enlace para el Caso B: Lead Operativo / Mesa de Entrada Centralizada directo al WhatsApp de Blanca con ficha completa
+  const textFrontDesk = `*📋 SOLICITUD DE CONSULTORÍA CORPORATIVA (BMG CONSULTORES)*\n\n` +
+    `Hola Blanca, completé el formulario de precalificación en la web de BMG Consultores:\n\n` +
+    `👤 *Nombre:* ${nombre || "No especificado"}\n` +
+    `🏢 *Empresa / Proyecto:* ${empresa || "No especificado"}\n` +
+    `📱 *WhatsApp:* ${telefono || "No especificado"}\n` +
+    `✉️ *Email:* ${email || "No especificado"}\n\n` +
+    `📊 *Facturación:* ${facturacionLabels[facturacion] || facturacion || "No especificado"}\n` +
+    `🎯 *Consulta:* ${naturalezaLabels[naturaleza] || naturaleza || "No especificado"}\n` +
+    `💰 *Presupuesto:* ${presupuestoLabels[presupuesto] || presupuesto || "No especificado"}\n\n` +
+    `Solicito asignación con un consultor senior de BMG Consultores.`;
+  const frontDeskWhatsAppUrl = `https://wa.me/51994118084?text=${encodeURIComponent(textFrontDesk)}`;
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-2 sm:p-4 bg-black/85 backdrop-blur-md overflow-hidden">
