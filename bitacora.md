@@ -1,5 +1,39 @@
 # Bitácora de Proyecto - BMG Consultores
 
+[2026-11-12 16:10:00] DESPLIEGUE EN PRODUCCIÓN DE REINGENIERÍA VISUAL Y BLINDAJE DE MODAL:
+ - Blindaje Responsivo de Pop-up Modal (PrecalificacionModal.tsx):
+   * Ajuste de altura dinámica a `max-h-[88vh] my-auto` con padding adaptable `p-2 sm:p-4`.
+   * Integración de `overscroll-contain` en los contenedores desplazables para aislar el scroll de la página en laptops y pantallas táctiles.
+   * Cabecera superior y pie inferior 100% blindados como componentes flex estáticos (`shrink-0`), asegurando visibilidad perpetua de los botones `← Volver a la landing` y `Continuar a Contacto` sin importar la escala de pantalla (125%/150%).
+ - Despliegue de Reingeniería de Contraste en Scroll Work (ScrollExperienceSection.tsx):
+   * Despeje absoluto del logotipo 3D dorado de BMG en el video sobre mármol negro.
+   * Traslado del contenido y botones al dock ejecutivo inferior con cristal esmerilado de alta opacidad (`bg-[#082B3A]/92 backdrop-blur-2xl border border-[#D6A83F]/35`).
+   * Eliminada colisión tipográfica HTML frente al render 3D.
+ - Generación y Despliegue de Nuevos Bundles en VPS:
+   * Build compilado con Vite: bundle JavaScript `index-CShekfHC.js` (753.55 KB) y CSS `index-azQTjnGa.css` (192.39 KB).
+   * Imagen Docker `bmg-consultores-web:latest` reconstruida sin caché y levantada en el VPS `2.24.72.21`.
+   * Verificación HTTP 200 OK en `http://2.24.72.21/` y `http://2.24.72.21/videos/bmg-experience.mp4` con soporte de streaming por rangos (Accept-Ranges).
+ - Sincronización en las 4 Capas (VPS, Git, Brain, Local):
+   * VPS: Contenedor actualizado y verificado en vivo.
+   * Local: `bitacora.md`, componentes `PrecalificacionModal.tsx`, `ScrollExperienceSection.tsx` y `Navbar.tsx`.
+   * Brain: Actualizado artefacto `INFORME_IMPLEMENTACION_BMG_SCROLL_WORK.md`.
+   * Git: Commit y push a `main`.
+
+[2026-11-12 15:40:00] REINGENIERÍA DE CONTRASTE SCROLL WORK Y VIDEO HD FLOW:
+ - Reemplazo de Video por Versión HD (Google Flow):
+   * Archivo: `public/videos/bmg-experience.mp4` (1280×720 píxeles, 24 fps, 1.87 MB).
+   * Codificación con Faststart (`moov` al inicio) sin pista de audio para scrubbing ultra-rápido.
+   * Frame de descanso/poster: `public/images/bmg-experience-poster.jpg` (101 KB).
+ - Corrección de Colisión y Contraste Visual (ScrollExperienceSection.tsx):
+   * Despeje del Logotipo 3D: Eliminado el texto HTML superpuesto en la fase 3 para que el logo dorado en relieve sobre mármol negro del video luzca como protagonista indiscutible sin colisiones.
+   * Dock Ejecutivo en Tercio Inferior: Reubicados el llamado institucional y los botones de acción (*Solicitar Sesión con la CEO* y *Conocer las 9 Divisiones*) en un dock flotante inferior con fondo de cristal esmerilado oscuro (`bg-[#082B3A]/92 backdrop-blur-2xl border border-[#D6A83F]/35 shadow-2xl`).
+   * Fondos de Cristal en Fases 1 y 2: Implementadas tarjetas con backdrop blur y sombra profunda (`bg-[#082B3A]/90 border border-white/15`) para legibilidad 100% sobre las tomas de oficinas y giro.
+ - Navbar:
+   * Añadido `whitespace-nowrap flex-shrink-0` al botón *Estrategia Premium* para evitar saltos o truncamientos de texto en cualquier resolución.
+ - Documentación Multicapa:
+   * Brain: Generado artefacto `INFORME_IMPLEMENTACION_BMG_SCROLL_WORK.md` con arquitectura, flujos Mermaid y prompts bilingües de Flow.
+   * Local y Repo sincronizados.
+
 [2026-11-12 14:30:00] IMPLEMENTACIÓN DE SCROLL WORK Y CORRECCIÓN POP-UP MODAL:
  - Pop-up de Precalificación Recortado (PrecalificacionModal.tsx):
    * Estructura interna fija `max-h-[90vh]` con flex-col.

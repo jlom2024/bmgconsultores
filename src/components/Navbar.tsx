@@ -159,7 +159,7 @@ export default function Navbar({ premiumTheme = false }: NavbarProps) {
           <div className="flex items-center gap-3">
             <button
               onClick={() => setModalPrecalificacionOpen(true)}
-              className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold tracking-wide text-black transition-all duration-200 hover:scale-105 shadow-sm"
+              className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold tracking-wide text-black transition-all duration-200 hover:scale-105 shadow-sm whitespace-nowrap flex-shrink-0"
               style={{
                 backgroundColor: "var(--brand-gold, #D6A83F)",
               }}

@@ -85,13 +85,13 @@ export default function PrecalificacionModal({ isOpen, onClose }: Precalificacio
   const frontDeskWhatsAppUrl = `https://wa.me/51994118084?text=${frontDeskText}`;
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-4 bg-black/85 backdrop-blur-md overflow-hidden">
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-2 sm:p-4 bg-black/85 backdrop-blur-md overflow-hidden">
       <motion.div
         initial={{ opacity: 0, scale: 0.95, y: 15 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.95, y: 15 }}
         transition={{ duration: 0.25 }}
-        className="relative w-full max-w-xl max-h-[90vh] flex flex-col bg-[#082B3A] border border-[#D6A83F]/40 rounded-2xl text-white shadow-2xl overflow-hidden"
+        className="relative w-full max-w-xl max-h-[88vh] flex flex-col bg-[#082B3A] border border-[#D6A83F]/40 rounded-2xl text-white shadow-2xl overflow-hidden my-auto"
         style={{ boxShadow: "0 20px 60px rgba(0,0,0,0.8), 0 0 30px rgba(214,168,63,0.15)" }}
       >
         {/* Glow de fondo */}
@@ -135,7 +135,7 @@ export default function PrecalificacionModal({ isOpen, onClose }: Precalificacio
         {step === "questions" && (
           <form onSubmit={handleNextToContact} className="flex flex-col flex-1 min-h-0 overflow-hidden">
             {/* Cuerpo desplazable de preguntas */}
-            <div className="flex-1 overflow-y-auto px-5 py-3 space-y-3.5 text-xs sm:text-sm">
+            <div className="flex-1 overflow-y-auto px-5 py-3 space-y-3.5 text-xs sm:text-sm overscroll-contain">
               {/* Pregunta 1 */}
               <div className="space-y-1.5">
                 <label className="block text-xs font-semibold text-white/90">
@@ -266,7 +266,7 @@ export default function PrecalificacionModal({ isOpen, onClose }: Precalificacio
         {/* PASO 2: DATOS DE CONTACTO */}
         {step === "contact" && (
           <form onSubmit={handleProcessLead} className="flex flex-col flex-1 min-h-0 overflow-hidden">
-            <div className="flex-1 overflow-y-auto px-5 py-3 space-y-2.5 text-xs sm:text-sm">
+            <div className="flex-1 overflow-y-auto px-5 py-3 space-y-2.5 text-xs sm:text-sm overscroll-contain">
               <div className="p-2.5 rounded-xl bg-white/[0.03] border border-white/10 text-xs text-white/70">
                 Ingresa tus datos corporativos para canalizar el análisis de tu proyecto con el equipo correspondiente.
               </div>
