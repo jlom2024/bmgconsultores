@@ -1,5 +1,15 @@
 # Bitácora de Proyecto - BMG Consultores
 
+[2026-11-12 13:54:00] HABILITACIÓN DE PREVIEW PÚBLICA EN INTERNET:
+ - Enrutamiento directo por IP pública: Vinculada la IP `2.24.72.21` en `VIRTUAL_HOST` del contenedor `bmg-consultores-web`.
+ - Acceso inmediato en navegador (sin necesidad de hosts ni DNS aún):
+   * Portada / Home: http://2.24.72.21/
+   * División Contable (Pedro Reyes): http://2.24.72.21/contable
+   * Imagen de Asesor Contable: http://2.24.72.21/images/asesor-pedro-reyes.png
+   * Activos JS/CSS: http://2.24.72.21/assets/
+ - Verificación de estado: Respuestas HTTP 200 OK en todas las rutas SPA y recursos estáticos.
+ - Preparación de dominio final: El contenedor ya está listo para `bmgconsultores.site` y `www.bmgconsultores.site`; al apuntar los registros DNS A hacia `2.24.72.21`, Let's Encrypt aprovisionará SSL automáticamente.
+
 [2026-11-12 13:46:00] DESPLIEGUE DE CONTENEDOR DOCKER EN VPS KREO:
  - Servidor VPS: `2.24.72.21` (Ubuntu / Docker 29.5.1).
  - Directorio en servidor: `/opt/bmg-consultores/`
