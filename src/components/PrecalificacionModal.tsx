@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, ShieldCheck, CheckCircle2, ArrowRight, Clock, MessageSquare, Sparkles, Building2, User, Phone, Mail } from "lucide-react";
+import { X, ShieldCheck, CheckCircle2, ArrowRight, ArrowLeft, Clock, MessageSquare, Sparkles, Building2, User, Phone, Mail } from "lucide-react";
 
 interface PrecalificacionModalProps {
   isOpen: boolean;
@@ -8,7 +9,13 @@ interface PrecalificacionModalProps {
 }
 
 export default function PrecalificacionModal({ isOpen, onClose }: PrecalificacionModalProps) {
+  const navigate = useNavigate();
   const [step, setStep] = useState<"questions" | "contact" | "evaluating" | "result">("questions");
+
+  const handleReturnToLanding = () => {
+    onClose();
+    navigate("/");
+  };
 
   // Respuestas del formulario
   const [facturacion, setFacturacion] = useState<string>("");
@@ -91,14 +98,24 @@ export default function PrecalificacionModal({ isOpen, onClose }: Precalificacio
         <div className="absolute top-0 right-0 w-72 h-72 bg-[#D6A83F]/10 rounded-full blur-3xl pointer-events-none -mr-20 -mt-20" />
         <div className="absolute bottom-0 left-0 w-72 h-72 bg-[#4E9FC2]/10 rounded-full blur-3xl pointer-events-none -ml-20 -mb-20" />
 
-        {/* Botón Cerrar */}
-        <button
-          onClick={onClose}
-          className="absolute top-5 right-5 p-2 rounded-full text-white/50 hover:text-white hover:bg-white/10 transition-colors z-10"
-          aria-label="Cerrar modal"
-        >
-          <X size={20} />
-        </button>
+        {/* Barra superior de retorno / cerrar */}
+        <div className="flex items-center justify-between mb-4 relative z-10">
+          <button
+            type="button"
+            onClick={handleReturnToLanding}
+            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold text-white/80 bg-white/5 hover:bg-white/15 hover:text-white border border-white/15 transition-all cursor-pointer"
+          >
+            <ArrowLeft size={14} /> Volver a la landing
+          </button>
+          <button
+            type="button"
+            onClick={handleReturnToLanding}
+            className="p-1.5 rounded-full text-white/50 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
+            aria-label="Cerrar y volver a la landing"
+          >
+            <X size={20} />
+          </button>
+        </div>
 
         {/* Encabezado */}
         <div className="mb-6">
@@ -218,17 +235,26 @@ export default function PrecalificacionModal({ isOpen, onClose }: Precalificacio
               </div>
             </div>
 
-            <button
-              type="submit"
-              disabled={!facturacion || !naturaleza || !presupuesto}
-              className="w-full flex items-center justify-center gap-2 py-3.5 px-6 rounded-2xl font-bold text-black text-sm uppercase tracking-wider transition-all disabled:opacity-40 disabled:cursor-not-allowed hover:scale-[1.01]"
-              style={{
-                backgroundColor: "var(--brand-gold, #D6A83F)",
-                boxShadow: "0 4px 20px rgba(214,168,63,0.35)",
-              }}
-            >
-              Continuar a Datos de Enlace <ArrowRight size={16} />
-            </button>
+            <div className="flex flex-col sm:flex-row gap-3 pt-2">
+              <button
+                type="button"
+                onClick={handleReturnToLanding}
+                className="order-2 sm:order-1 sm:w-2/5 flex items-center justify-center gap-2 py-3.5 px-4 rounded-2xl border border-white/20 text-xs sm:text-sm font-semibold text-white/75 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
+              >
+                <ArrowLeft size={15} /> Volver a la landing
+              </button>
+              <button
+                type="submit"
+                disabled={!facturacion || !naturaleza || !presupuesto}
+                className="order-1 sm:order-2 sm:w-3/5 flex items-center justify-center gap-2 py-3.5 px-6 rounded-2xl font-bold text-black text-sm uppercase tracking-wider transition-all disabled:opacity-40 disabled:cursor-not-allowed hover:scale-[1.01] cursor-pointer"
+                style={{
+                  backgroundColor: "var(--brand-gold, #D6A83F)",
+                  boxShadow: "0 4px 20px rgba(214,168,63,0.35)",
+                }}
+              >
+                Continuar <ArrowRight size={16} />
+              </button>
+            </div>
           </form>
         )}
 
@@ -379,10 +405,10 @@ export default function PrecalificacionModal({ isOpen, onClose }: Precalificacio
                     💼 Abrir Agenda Privada con la CEO
                   </a>
                   <button
-                    onClick={onClose}
-                    className="sm:w-1/3 py-4 px-4 rounded-2xl border border-white/20 text-xs text-white/70 hover:text-white hover:bg-white/10 transition-colors"
+                    onClick={handleReturnToLanding}
+                    className="sm:w-1/3 flex items-center justify-center gap-1.5 py-4 px-4 rounded-2xl border border-white/20 text-xs font-semibold text-white/75 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
                   >
-                    Finalizar
+                    <ArrowLeft size={14} /> Volver a la landing
                   </button>
                 </div>
               </div>
@@ -422,10 +448,10 @@ export default function PrecalificacionModal({ isOpen, onClose }: Precalificacio
                     <MessageSquare size={16} /> Conectar con Consultor Senior por WhatsApp
                   </a>
                   <button
-                    onClick={onClose}
-                    className="sm:w-1/3 py-4 px-4 rounded-2xl border border-white/20 text-xs text-white/70 hover:text-white hover:bg-white/10 transition-colors"
+                    onClick={handleReturnToLanding}
+                    className="sm:w-1/3 flex items-center justify-center gap-1.5 py-4 px-4 rounded-2xl border border-white/20 text-xs font-semibold text-white/75 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
                   >
-                    Cerrar
+                    <ArrowLeft size={14} /> Volver a la landing
                   </button>
                 </div>
               </div>

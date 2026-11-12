@@ -159,13 +159,12 @@ export default function Navbar({ premiumTheme = false }: NavbarProps) {
           <div className="flex items-center gap-3">
             <button
               onClick={() => setModalPrecalificacionOpen(true)}
-              className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider text-black transition-all duration-300 hover:scale-105"
+              className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold tracking-wide text-black transition-all duration-200 hover:scale-105 shadow-sm"
               style={{
                 backgroundColor: "var(--brand-gold, #D6A83F)",
-                boxShadow: "0 4px 18px rgba(214,168,63,0.45)",
               }}
             >
-              <Sparkles size={14} /> Estrategia Premium
+              <Sparkles size={13} /> Estrategia Premium
             </button>
 
             {/* Mobile menu toggle */}
@@ -195,13 +194,12 @@ export default function Navbar({ premiumTheme = false }: NavbarProps) {
                     setMenuOpen(false);
                     setModalPrecalificacionOpen(true);
                   }}
-                  className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-xs font-bold uppercase tracking-wider text-black transition-all"
+                  className="w-full flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl text-xs font-semibold tracking-wide text-black transition-all shadow-sm"
                   style={{
                     backgroundColor: "var(--brand-gold, #D6A83F)",
-                    boxShadow: "0 4px 16px rgba(214,168,63,0.35)",
                   }}
                 >
-                  <Sparkles size={15} /> Estrategia Premium
+                  <Sparkles size={14} /> Estrategia Premium
                 </button>
 
                 {/* Sección Corporativo */}
