@@ -1,5 +1,22 @@
 # Bitácora de Proyecto - BMG Consultores
 
+[2026-11-12 21:43:00] ACTIVACIÓN OFICIAL DE DOMINIO Y SSL HTTPS EN PRODUCCIÓN:
+ - Propagación DNS y Enrutamiento Web:
+   * Registro A (`@` -> `2.24.72.21`) y CNAME (`www` -> `bmgconsultores.site`) propagados exitosamente en servidores DNS mundiales (Google, Cloudflare).
+ - Aprovisionamiento Automático de Certificado SSL (Let's Encrypt):
+   * Contenedor `acme-companion` autenticó y validó los dominios `bmgconsultores.site` y `www.bmgconsultores.site` con challenge HTTP-01.
+   * Certificados emitidos e instalados en `/etc/nginx/certs/bmgconsultores.site/` (`fullchain.pem` y `key.pem`).
+   * Recarga en caliente de `nginx-proxy` con HTTP/2 y HSTS habilitados.
+ - Verificación de Acceso en Vivo (HTTP/2 200 OK con SSL):
+   * URL Principal: https://bmgconsultores.site/
+   * URL con www: https://www.bmgconsultores.site/
+   * Módulo Contable: https://bmgconsultores.site/contable
+ - Sincronización en las 4 Capas (VPS, Git, Brain, Local):
+   * VPS: SSL y Docker 100% operativos.
+   * Local: `bitacora.md`.
+   * Git: Commit y push a `main`.
+   * Brain: Actualizado informe técnico.
+
 [2026-11-12 18:58:00] INTEGRACIÓN INTEGRAL DE LEADS A WHATSAPP DE BLANCA (+51 994 118 084):
  - Enriquecimiento Estructurado del Pop-up de Estrategia Premium (PrecalificacionModal.tsx):
    * Confección de plantilla ejecutiva completa para WhatsApp con todas las variables capturadas: Nombre, Empresa/Proyecto, WhatsApp del prospecto, Correo, Facturación/Capital, Naturaleza de la consulta y Presupuesto asignado.
