@@ -32,6 +32,7 @@ export interface Service {
   colorDark: string;
   icon: string;
   cta: string;
+  email?: string;
 }
 
 export const services: Service[] = [
@@ -91,6 +92,7 @@ export const services: Service[] = [
     colorDark: "#124E68",
     icon: "🚀",
     cta: "Primera consulta sin costo",
+    email: "emprendedor@bmgconsultores.site",
   },
   {
     id: "contable",
@@ -179,6 +181,7 @@ export const services: Service[] = [
     colorDark: "#124E68",
     icon: "📊",
     cta: "Solicitar diagnóstico de salud tributaria",
+    email: "contabilidad@bmgconsultores.site",
   },
   {
     id: "legal",
@@ -229,6 +232,7 @@ export const services: Service[] = [
     colorDark: "#124E68",
     icon: "⚖️",
     cta: "Consulta legal gratuita",
+    email: "legal@bmgconsultores.site",
   },
   {
     id: "comercio-exterior",
@@ -278,7 +282,8 @@ export const services: Service[] = [
     color: "#C69228",
     colorDark: "#082B3A",
     icon: "🌐",
-    cta: "Consultar con especialista aduanero"
+    cta: "Consultar con especialista aduanero",
+    email: "comercioexterior@bmgconsultores.site",
   },
   {
     id: "ia",
@@ -321,7 +326,8 @@ export const services: Service[] = [
       imagePosition: "center 20%",
       whatsappMessage: "Hola Jorge, quiero una asesoría con la División Desarrollo IA."
     },
-    cta: "Diagnóstico IA gratis"
+    cta: "Diagnóstico IA gratis",
+    email: "ia@bmgconsultores.site",
   },
   {
     id: "lobby",
@@ -372,6 +378,7 @@ export const services: Service[] = [
     colorDark: "#124E68",
     icon: "🏛️",
     cta: "Quiero licitar con el Estado",
+    email: "licitaciones@bmgconsultores.site",
   },
   {
     id: "inmobiliario",
@@ -442,7 +449,8 @@ export const services: Service[] = [
       image: "/images/asesor-elvis.jpg",
       whatsappMessage: "Hola, quiero agendar una asesoría con el arquitecto de la División Inmobiliaria.",
     },
-    cta: "Consulta gratuita"
+    cta: "Consulta gratuita",
+    email: "inmobiliaria@bmgconsultores.site",
   },
   {
     id: "travel",
@@ -493,6 +501,7 @@ export const services: Service[] = [
     colorDark: "#124E68",
     icon: "✈️",
     cta: "Cotizar mi viaje",
+    email: "viajes@bmgconsultores.site",
   },
   {
     id: "seguros",
@@ -554,5 +563,6 @@ export const services: Service[] = [
     colorDark: "#124E68",
     icon: "🛡️",
     cta: "Cotiza tu seguro gratis",
+    email: "seguros@bmgconsultores.site",
   },
 ];

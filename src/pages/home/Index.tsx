@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { services } from "@/data/services";
 import { usePageMeta } from "@/lib/seo";
-import { Mail, Menu, X, ChevronRight, Send, MessageCircle, MapPin, CheckCircle2 } from "lucide-react";
+import { Mail, Menu, X, ChevronRight, Send, MessageCircle, MapPin, CheckCircle2, Phone } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import ScrollExperienceSection from "@/components/ScrollExperienceSection";
 import PrecalificacionModal from "@/components/PrecalificacionModal";
@@ -615,7 +615,7 @@ const Contact = () => {
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 max-w-5xl mx-auto">
           <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="lg:col-span-2 space-y-6">
             {[
-              { icon: <Mail size={20} />, label: "Email", value: "info@bgconsultores.site", href: "mailto:info@bgconsultores.site" },
+              { icon: <Mail size={20} />, label: "Email", value: "gestion@bmgconsultores.site", href: "mailto:gestion@bmgconsultores.site" },
               { icon: <MessageCircle size={20} />, label: "WhatsApp", value: "+51 994 118 084", href: "https://wa.me/51994118084" },
               { icon: <MapPin size={20} />, label: "Ubicación", value: "Av. Agustín Gamarra 1132, 2do Piso Of. 226 (Galería Brisas), La Victoria", href: "https://maps.google.com/?q=Av.+Agust%C3%ADn+Gamarra+1132%2C+Segundo+Piso%2C+Oficina+226%2C+Galer%C3%ADa+Brisas%2C+La+Victoria%2C+Lima" },
             ].map((item) => (
@@ -681,7 +681,7 @@ const Contact = () => {
               </button>
               <p className="text-center text-white/30 text-xs">
                 También puedes escribirnos a{" "}
-                <a href="mailto:info@bgconsultores.site" className="text-primary hover:underline">info@bgconsultores.site</a>
+                <a href="mailto:gestion@bmgconsultores.site" className="text-primary hover:underline">gestion@bmgconsultores.site</a>
               </p>
             </form>
           </motion.div>
@@ -740,8 +740,25 @@ const Footer = () => {
         </div>
       </div>
       <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4">
-        <div className="flex items-center gap-3">
+        <div className="flex flex-col sm:flex-row items-center gap-4">
           <img src="/logos/bmg_clean.png?v=5" alt="BMG" className="h-10 w-auto object-contain" />
+          <div className="flex flex-col sm:flex-row items-center gap-3 text-xs pl-0 sm:pl-3 sm:border-l sm:border-white/15">
+            <a
+              href="mailto:gestion@bmgconsultores.site"
+              className="flex items-center gap-1.5 text-white/70 hover:text-[#D6A83F] transition-colors"
+            >
+              <Mail size={13} className="text-[#D6A83F]" /> gestion@bmgconsultores.site
+            </a>
+            <span className="hidden sm:inline text-white/20">·</span>
+            <a
+              href="https://wa.me/51994118084"
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center gap-1.5 text-white/70 hover:text-[#4E9FC2] transition-colors"
+            >
+              <Phone size={13} className="text-[#4E9FC2]" /> +51 994 118 084
+            </a>
+          </div>
         </div>
         <div className="flex flex-wrap justify-center gap-4">
           {services.map((s) => (

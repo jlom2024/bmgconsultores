@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-export const SITE_URL = (import.meta.env.VITE_SITE_URL as string | undefined)?.replace(/\/$/, "") || "https://www.bmgconsultoresperu.com";
+export const SITE_URL = (import.meta.env.VITE_SITE_URL as string | undefined)?.replace(/\/$/, "") || "https://bmgconsultores.site";
 export const SITE_NAME = "BMG Consultores";
 export const DEFAULT_OG_IMAGE = `${SITE_URL}/og-image.jpg`;
 

@@ -1,5 +1,32 @@
 # Bitácora de Proyecto - BMG Consultores
 
+[2026-11-13 21:25:00] CONFIGURACIÓN DE CORREOS POR DIVISIÓN Y CONTACTO CORPORATIVO CENTRAL:
+ - Buzón Central y WhatsApp Principal:
+   * Correo corporativo general: `gestion@bmgconsultores.site` (único buzón real con acceso IMAP/SMTP/Webmail).
+   * WhatsApp corporativo: `+51 994 118 084` (+51994118084).
+ - Despliegue de Alias de Correo por Cada División de Negocio:
+   * División Emprendedor: `emprendedor@bmgconsultores.site`
+   * División Contabilidad: `contabilidad@bmgconsultores.site`
+   * División Legal: `legal@bmgconsultores.site`
+   * División Comercio Exterior: `comercioexterior@bmgconsultores.site`
+   * División Desarrollo IA: `ia@bmgconsultores.site`
+   * División Licitaciones (Lobby / Gestores): `licitaciones@bmgconsultores.site`
+   * División Inmobiliaria: `inmobiliaria@bmgconsultores.site`
+   * División Viajes: `viajes@bmgconsultores.site`
+   * División Seguros: `seguros@bmgconsultores.site`
+ - Integración en Frontend (Landing y Módulos):
+   * Modelo de datos (`src/data/services.ts`): Propiedad `email` tipada y poblada en los 9 servicios.
+   * Componente AdvisorSection (`src/pages/service/Index.tsx`): Botón pill interactivo `mailto:${email}` integrado junto al botón de WhatsApp.
+   * Secciones CTA Final por Servicio: Botón de correo directo por división en Contabilidad, Legal, Emprendedor, IA, Licitaciones, Inmobiliaria, Seguros, Comercio Exterior y Viajes.
+   * Home y Footers (`src/pages/home/Index.tsx`, `src/pages/service/Index.tsx`, `src/components/FooterGlobal.tsx`): Bloque de contacto con `gestion@bmgconsultores.site` y `+51 994 118 084`.
+   * Términos y Privacidad (`src/pages/legal/Index.tsx`): Actualizado canal de contacto a `gestion@bmgconsultores.site` y dominio `bmgconsultores.site`.
+   * SEO & Canónicos (`src/lib/seo.ts`, `scripts/seo-finalize.mjs`): Actualizado a `https://bmgconsultores.site`.
+ - Despliegue en Producción y Verificación VPS (`2.24.72.21`):
+   * Build Vite generado sin errores (dist/index.html, bundles JS/CSS con gzip).
+   * Contenedor Docker `bmg-consultores-web` reconstruido y reiniciado en el VPS.
+   * Verificación live con SSL HTTPS (HTTP/2 200 OK) en `https://bmgconsultores.site/`.
+
+
 [2026-11-12 21:43:00] ACTIVACIÓN OFICIAL DE DOMINIO Y SSL HTTPS EN PRODUCCIÓN:
  - Propagación DNS y Enrutamiento Web:
    * Registro A (`@` -> `2.24.72.21`) y CNAME (`www` -> `bmgconsultores.site`) propagados exitosamente en servidores DNS mundiales (Google, Cloudflare).

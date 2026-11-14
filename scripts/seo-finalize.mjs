@@ -8,7 +8,7 @@ import { resolve } from "path";
 
 function run() {
   const cwd = process.cwd();
-  const siteUrl = (process.env.VITE_SITE_URL || "https://www.bmgconsultoresperu.com").replace(/\/$/, "");
+  const siteUrl = (process.env.VITE_SITE_URL || "https://bmgconsultores.site").replace(/\/$/, "");
 
   for (const file of ["dist/index.html", "dist/robots.txt"]) {
     const filePath = resolve(cwd, file);

@@ -104,6 +104,22 @@ export default function FooterGlobal({ travelTheme = false }: FooterGlobalProps)
             <p className="text-xs text-white/60 leading-relaxed">
               Gestión Corporativa 360° y Red de Negocios Profesional de Alto Nivel. Blindaje patrimonial, formalización y escala empresarial en el Perú.
             </p>
+            <div className="pt-2 space-y-2 text-xs">
+              <a
+                href="mailto:gestion@bmgconsultores.site"
+                className="flex items-center gap-2 text-white/80 hover:text-[#D6A83F] transition-colors"
+              >
+                <Mail size={14} className="text-[#D6A83F]" /> gestion@bmgconsultores.site
+              </a>
+              <a
+                href="https://wa.me/51994118084"
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center gap-2 text-white/80 hover:text-[#4E9FC2] transition-colors"
+              >
+                <Phone size={14} className="text-[#4E9FC2]" /> +51 994 118 084
+              </a>
+            </div>
           </div>
 
           {/* Columna Institucional (con Quiénes Somos duplicado) */}

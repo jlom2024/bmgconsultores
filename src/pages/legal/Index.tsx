@@ -140,9 +140,10 @@ export function PrivacidadPage() {
 
       <Section title="8. Contacto">
         <p>
-          Si tienes preguntas sobre esta política o sobre el tratamiento de tus datos, contáctanos por WhatsApp al{" "}
-          <span style={{ color: GOLD }}>+51 994 118 084</span> o visite nuestro sitio en{" "}
-          <span style={{ color: GOLD }}>www.bmgconsultoresperu.com</span>.
+          Si tienes preguntas sobre esta política o sobre el tratamiento de tus datos, contáctanos por correo a{" "}
+          <a href="mailto:gestion@bmgconsultores.site" style={{ color: GOLD, textDecoration: "underline" }}>gestion@bmgconsultores.site</a>,
+          por WhatsApp al <span style={{ color: GOLD }}>+51 994 118 084</span> o visita nuestro sitio en{" "}
+          <a href="https://bmgconsultores.site" style={{ color: GOLD, textDecoration: "underline" }}>bmgconsultores.site</a>.
         </p>
       </Section>
     </LegalShell>
@@ -225,8 +226,9 @@ export function TerminosPage() {
 
       <Section title="9. Contacto">
         <p>
-          Para resolver cualquier duda sobre estos términos, contáctanos por WhatsApp al{" "}
-          <span style={{ color: GOLD }}>+51 994 118 084</span>.
+          Para resolver cualquier duda sobre estos términos, contáctanos por correo a{" "}
+          <a href="mailto:gestion@bmgconsultores.site" style={{ color: GOLD, textDecoration: "underline" }}>gestion@bmgconsultores.site</a>{" "}
+          o por WhatsApp al <span style={{ color: GOLD }}>+51 994 118 084</span>.
         </p>
       </Section>
     </LegalShell>

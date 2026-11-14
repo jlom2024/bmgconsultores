@@ -605,15 +605,25 @@ const TravelPage = ({ service }: { service: Service }) => {
             <p className="text-[#082B3A]/65 text-base leading-relaxed mb-10">
               Nuestro equipo lo diseña para ti, desde la primera consulta hasta el regreso. Sin costos ocultos, sin complicaciones.
             </p>
-            <a
-              href="https://wa.me/51994118084?text=Hola, me interesa cotizar un viaje con BG Travel"
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-3 px-10 py-4 rounded-full font-bold text-[#082B3A] text-base transition-all hover:scale-105 hover:shadow-2xl"
-              style={{ backgroundColor: "var(--brand-gold)", boxShadow: "0 8px 32px rgba(214,168,63,0.35)" }}
-            >
-              <MessageCircle size={20} /> Iniciar mi viaje →
-            </a>
+            <div className="flex flex-wrap items-center justify-center gap-4">
+              <a
+                href="https://wa.me/51994118084?text=Hola, me interesa cotizar un viaje con BG Travel"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-3 px-10 py-4 rounded-full font-bold text-[#082B3A] text-base transition-all hover:scale-105 hover:shadow-2xl"
+                style={{ backgroundColor: "var(--brand-gold)", boxShadow: "0 8px 32px rgba(214,168,63,0.35)" }}
+              >
+                <MessageCircle size={20} /> Iniciar mi viaje →
+              </a>
+              {service.email && (
+                <a
+                  href={`mailto:${service.email}`}
+                  className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-bold text-[#082B3A] bg-[#082B3A]/10 hover:bg-[#082B3A]/15 border border-[#082B3A]/25 transition-all hover:scale-105 text-base"
+                >
+                  <Mail size={18} className="text-[#082B3A]" /> {service.email}
+                </a>
+              )}
+            </div>
           </motion.div>
         </div>
       </section>
@@ -624,7 +634,15 @@ const TravelPage = ({ service }: { service: Service }) => {
 /* ======================================================
    ADVISOR SECTION — Componente Compartido
    ====================================================== */
-const AdvisorSection = ({ advisor, color }: { advisor: ServiceAdvisor; color: string }) => {
+const AdvisorSection = ({
+  advisor,
+  color,
+  email,
+}: {
+  advisor: ServiceAdvisor;
+  color: string;
+  email?: string;
+}) => {
   const whatsappMessage = encodeURIComponent(
     advisor.whatsappMessage ?? `Hola, quiero una asesoría con ${advisor.name}.`
   );
@@ -705,15 +723,25 @@ const AdvisorSection = ({ advisor, color }: { advisor: ServiceAdvisor; color: st
             </div>
           )}
 
-          <a
-            href={`https://wa.me/51994118084?text=${whatsappMessage}`}
-            target="_blank"
-            rel="noreferrer"
-            className="mt-6 inline-flex items-center gap-2 px-6 py-3 rounded-full font-bold text-black transition-all hover:scale-105"
-            style={{ backgroundColor: color }}
-          >
-            <MessageCircle size={18} /> Escribirle por WhatsApp
-          </a>
+          <div className="mt-6 flex flex-wrap items-center gap-3">
+            <a
+              href={`https://wa.me/51994118084?text=${whatsappMessage}`}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-bold text-black transition-all hover:scale-105 shadow-md"
+              style={{ backgroundColor: color }}
+            >
+              <MessageCircle size={18} /> Escribirle por WhatsApp
+            </a>
+            {email && (
+              <a
+                href={`mailto:${email}`}
+                className="inline-flex items-center gap-2 px-5 py-3 rounded-full font-semibold text-white/90 bg-white/5 hover:bg-white/10 border border-white/20 transition-all hover:scale-105 text-sm"
+              >
+                <Mail size={16} style={{ color }} /> {email}
+              </a>
+            )}
+          </div>
         </div>
       </div>
     </section>
@@ -994,7 +1022,7 @@ const ContablePage = ({ service }: { service: Service }) => {
       </section>
 
       {/* ── ASESOR / CONTADOR ── */}
-      {service.advisor && <AdvisorSection advisor={service.advisor} color={GOLD_HEX} />}
+      {service.advisor && <AdvisorSection advisor={service.advisor} color={GOLD_HEX} email={service.email} />}
 
       {/* ── FAQs ── */}
       {service.faqs?.length > 0 && (
@@ -1063,14 +1091,24 @@ const ContablePage = ({ service }: { service: Service }) => {
             <p className="text-muted-foreground text-base leading-relaxed mb-10">
               Revisamos tu situación contable y tributaria actual en 30 minutos. Sin compromisos, con soluciones reales.
             </p>
-            <a
-              href="https://wa.me/51994118084?text=Hola, quiero solicitar el diagnóstico de salud tributaria de BG Contable"
-              target="_blank" rel="noreferrer"
-              className="inline-flex items-center gap-3 px-10 py-4 rounded-full font-bold text-black text-base transition-all hover:scale-105 hover:shadow-2xl"
-              style={{ backgroundColor: GOLD_HEX, boxShadow: `0 8px 32px ${GOLD_HEX}45` }}
-            >
-              <MessageCircle size={20} /> Quiero mi diagnóstico →
-            </a>
+            <div className="flex flex-wrap items-center justify-center gap-4">
+              <a
+                href="https://wa.me/51994118084?text=Hola, quiero solicitar el diagnóstico de salud tributaria de BG Contable"
+                target="_blank" rel="noreferrer"
+                className="inline-flex items-center gap-3 px-10 py-4 rounded-full font-bold text-black text-base transition-all hover:scale-105 hover:shadow-2xl"
+                style={{ backgroundColor: GOLD_HEX, boxShadow: `0 8px 32px ${GOLD_HEX}45` }}
+              >
+                <MessageCircle size={20} /> Quiero mi diagnóstico →
+              </a>
+              {service.email && (
+                <a
+                  href={`mailto:${service.email}`}
+                  className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-bold text-white bg-white/10 hover:bg-white/20 border border-white/25 transition-all hover:scale-105 text-base"
+                >
+                  <Mail size={18} style={{ color: GOLD_HEX }} /> {service.email}
+                </a>
+              )}
+            </div>
           </motion.div>
         </div>
       </section>
@@ -1444,12 +1482,12 @@ const EmprendedorPage = ({ service }: { service: Service }) => {
       <section className="py-24" style={{ background: "rgba(214,168,63,0.04)", borderTop: `1px solid ${GOLD_HEX}20` }}><div className="container mx-auto px-6"><motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="text-center mb-16"><p className="text-xs font-bold tracking-[0.2em] uppercase mb-3" style={{ color: GOLD_HEX }}>Historias emprendedoras</p><h2 className="text-4xl lg:text-5xl font-bold text-foreground" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Resultados que inspiran</h2></motion.div><div className="grid grid-cols-1 md:grid-cols-3 gap-6">{testimonials.map((t, i) => (<motion.div key={t.name} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: i * 0.15 }} className="p-8 rounded-2xl border" style={{ background: `${GOLD_HEX}07`, border: `1px solid ${GOLD_HEX}25` }}><div className="flex gap-1 mb-4">{Array.from({ length: 5 }).map((_, si) => (<Star key={si} size={14} fill={GOLD_HEX} style={{ color: GOLD_HEX }} />))}</div><p className="text-muted-foreground text-sm leading-relaxed mb-5 italic">&quot;{t.text}&quot;</p><p className="font-bold text-foreground text-sm">{t.name}</p><p className="text-muted-foreground text-xs mt-1">{t.business}</p><p className="mt-4 text-xs font-bold rounded-full inline-flex px-3 py-1" style={{ background: GOLD_HEX + "18", color: GOLD_HEX }}>{t.result}</p></motion.div>))}</div></div></section>
 
       {/* @section: asesor-emprendedor */}
-      {service.advisor && <AdvisorSection advisor={service.advisor} color={GOLD_HEX} />}
+      {service.advisor && <AdvisorSection advisor={service.advisor} color={GOLD_HEX} email={service.email} />}
 
       {/* @section: faqs-emprendedor */}
       {service.faqs?.length > 0 && (<section className="py-24 bg-background"><div className="container mx-auto px-6 max-w-3xl"><motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="mb-12"><div className="flex items-center gap-4 mb-3"><div className="w-1 h-10 rounded-full" style={{ backgroundColor: GOLD_HEX }} /><p className="text-xs font-bold tracking-[0.2em] uppercase" style={{ color: GOLD_HEX }}>Resolvemos tus dudas</p></div><h2 className="text-4xl font-bold text-foreground ml-6" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Preguntas frecuentes</h2></motion.div><div className="space-y-3">{service.faqs.map((faq) => (<FaqItemDark key={faq.q} q={faq.q} a={faq.a} color={GOLD_HEX} />))}</div></div></section>)}
       {/* @section: cta-final-emprendedor */}
-      <section className="py-28 text-center" style={{ background: `linear-gradient(135deg, ${GOLD_HEX}12, transparent 60%)`, borderTop: `1px solid ${GOLD_HEX}25` }}><div className="container mx-auto px-6 max-w-2xl"><motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}><p className="text-xs font-bold tracking-[0.2em] uppercase mb-4" style={{ color: GOLD_HEX }}>Primera consulta sin costo</p><h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6 leading-tight" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Formaliza tu negocio<br /><span style={{ color: GOLD_HEX }}>sin caminar solo.</span></h2><p className="text-muted-foreground text-base leading-relaxed mb-10">Cuéntanos en qué etapa estás y te damos una ruta clara para constituir, ordenar y empezar a crecer.</p><a href={wa} target="_blank" rel="noreferrer" className="inline-flex items-center gap-3 px-10 py-4 rounded-full font-bold text-black text-base transition-all hover:scale-105 hover:shadow-2xl" style={{ backgroundColor: GOLD_HEX, boxShadow: `0 8px 32px ${GOLD_HEX}45` }}><MessageCircle size={20} /> Primera consulta sin costo →</a></motion.div></div></section>
+      <section className="py-28 text-center" style={{ background: `linear-gradient(135deg, ${GOLD_HEX}12, transparent 60%)`, borderTop: `1px solid ${GOLD_HEX}25` }}><div className="container mx-auto px-6 max-w-2xl"><motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}><p className="text-xs font-bold tracking-[0.2em] uppercase mb-4" style={{ color: GOLD_HEX }}>Primera consulta sin costo</p><h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6 leading-tight" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Formaliza tu negocio<br /><span style={{ color: GOLD_HEX }}>sin caminar solo.</span></h2><p className="text-muted-foreground text-base leading-relaxed mb-10">Cuéntanos en qué etapa estás y te damos una ruta clara para constituir, ordenar y empezar a crecer.</p><div className="flex flex-wrap items-center justify-center gap-4"><a href={wa} target="_blank" rel="noreferrer" className="inline-flex items-center gap-3 px-10 py-4 rounded-full font-bold text-black text-base transition-all hover:scale-105 hover:shadow-2xl" style={{ backgroundColor: GOLD_HEX, boxShadow: `0 8px 32px ${GOLD_HEX}45` }}><MessageCircle size={20} /> Primera consulta sin costo →</a>{service.email && (<a href={`mailto:${service.email}`} className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-bold text-white bg-white/10 hover:bg-white/20 border border-white/25 transition-all hover:scale-105 text-base"><Mail size={18} style={{ color: GOLD_HEX }} /> {service.email}</a>)}</div></motion.div></div></section>
     </div>
   );
 };
@@ -1503,12 +1541,12 @@ const IAPage = ({ service }: { service: Service }) => {
       <section className="py-6 px-4 md:px-6" style={{ background: "var(--background)" }}><div className="container mx-auto"><motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }} className="grid grid-cols-3 gap-3" style={{ height: "clamp(260px,42vw,460px)" }}><div className="col-span-2 rounded-2xl overflow-hidden relative group"><img src={service.images[0]} alt="Automatización IA" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" /><div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ background: `linear-gradient(to top, ${GOLD_HEX}55, transparent)` }} /></div><div className="flex flex-col gap-3"><div className="flex-1 rounded-2xl overflow-hidden"><img src={service.images[1]} alt="Producción IA" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" /></div><div className="flex-1 rounded-2xl overflow-hidden"><img src={service.images[2]} alt="Software IA" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" /></div></div></motion.div></div></section>
       {/* @section: testimonios-ia */}
       <section className="py-24" style={{ background: "rgba(214,168,63,0.04)", borderTop: `1px solid ${GOLD_HEX}20` }}><div className="container mx-auto px-6"><motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="text-center mb-16"><p className="text-xs font-bold tracking-[0.2em] uppercase mb-3" style={{ color: GOLD_HEX }}>Empresas aumentadas con IA</p><h2 className="text-4xl lg:text-5xl font-bold text-foreground" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Casos de adopción inteligente</h2></motion.div><div className="grid grid-cols-1 md:grid-cols-3 gap-6">{testimonials.map((t, i) => (<motion.div key={t.name} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: i * 0.15 }} className="p-8 rounded-2xl border" style={{ background: `${GOLD_HEX}07`, border: `1px solid ${GOLD_HEX}25` }}><div className="flex gap-1 mb-4">{Array.from({ length: 5 }).map((_, si) => (<Star key={si} size={14} fill={GOLD_HEX} style={{ color: GOLD_HEX }} />))}</div><p className="text-muted-foreground text-sm leading-relaxed mb-5 italic">&quot;{t.text}&quot;</p><p className="font-bold text-foreground text-sm">{t.name}</p><p className="text-muted-foreground text-xs mt-1">{t.role}</p><p className="mt-4 text-xs font-bold rounded-full inline-flex px-3 py-1" style={{ background: GOLD_HEX + "18", color: GOLD_HEX }}>{t.result}</p></motion.div>))}</div></div></section>
-      {service.advisor && <AdvisorSection advisor={service.advisor} color={GOLD_HEX} />}
+      {service.advisor && <AdvisorSection advisor={service.advisor} color={GOLD_HEX} email={service.email} />}
 
       {/* @section: faqs-ia */}
       {service.faqs?.length > 0 && (<section className="py-24 bg-background"><div className="container mx-auto px-6 max-w-3xl"><motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="mb-12"><div className="flex items-center gap-4 mb-3"><div className="w-1 h-10 rounded-full" style={{ backgroundColor: GOLD_HEX }} /><p className="text-xs font-bold tracking-[0.2em] uppercase" style={{ color: GOLD_HEX }}>Resolvemos tus dudas</p></div><h2 className="text-4xl font-bold text-foreground ml-6" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Preguntas frecuentes</h2></motion.div><div className="space-y-3">{service.faqs.map((faq) => (<FaqItemDark key={faq.q} q={faq.q} a={faq.a} color={GOLD_HEX} />))}</div></div></section>)}
       {/* @section: cta-final-ia */}
-      <section className="py-28 text-center" style={{ background: `linear-gradient(135deg, ${GOLD_HEX}12, transparent 60%)`, borderTop: `1px solid ${GOLD_HEX}25` }}><div className="container mx-auto px-6 max-w-2xl"><motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}><p className="text-xs font-bold tracking-[0.2em] uppercase mb-4" style={{ color: GOLD_HEX }}>Diagnóstico IA gratuito</p><h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6 leading-tight" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Detectemos qué proceso<br /><span style={{ color: GOLD_HEX }}>puede automatizarse primero.</span></h2><p className="text-muted-foreground text-base leading-relaxed mb-10">Revisamos tu operación y te proponemos una hoja de ruta IA con impacto rápido, medible y escalable.</p><a href={wa} target="_blank" rel="noreferrer" className="inline-flex items-center gap-3 px-10 py-4 rounded-full font-bold text-black text-base transition-all hover:scale-105 hover:shadow-2xl" style={{ backgroundColor: GOLD_HEX, boxShadow: `0 8px 32px ${GOLD_HEX}45` }}><MessageCircle size={20} /> Diagnóstico IA gratuito →</a></motion.div></div></section>
+      <section className="py-28 text-center" style={{ background: `linear-gradient(135deg, ${GOLD_HEX}12, transparent 60%)`, borderTop: `1px solid ${GOLD_HEX}25` }}><div className="container mx-auto px-6 max-w-2xl"><motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}><p className="text-xs font-bold tracking-[0.2em] uppercase mb-4" style={{ color: GOLD_HEX }}>Diagnóstico IA gratuito</p><h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6 leading-tight" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Detectemos qué proceso<br /><span style={{ color: GOLD_HEX }}>puede automatizarse primero.</span></h2><p className="text-muted-foreground text-base leading-relaxed mb-10">Revisamos tu operación y te proponemos una hoja de ruta IA con impacto rápido, medible y escalable.</p><div className="flex flex-wrap items-center justify-center gap-4"><a href={wa} target="_blank" rel="noreferrer" className="inline-flex items-center gap-3 px-10 py-4 rounded-full font-bold text-black text-base transition-all hover:scale-105 hover:shadow-2xl" style={{ backgroundColor: GOLD_HEX, boxShadow: `0 8px 32px ${GOLD_HEX}45` }}><MessageCircle size={20} /> Diagnóstico IA gratuito →</a>{service.email && (<a href={`mailto:${service.email}`} className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-bold text-white bg-white/10 hover:bg-white/20 border border-white/25 transition-all hover:scale-105 text-base"><Mail size={18} style={{ color: GOLD_HEX }} /> {service.email}</a>)}</div></motion.div></div></section>
       <OfertasMesModal />
     </div>
 
@@ -1598,18 +1636,28 @@ const ServiceDetailFull = ({ service }: { service: Service }) => {
               {service.longDescription}
             </motion.p>
 
-            <motion.a
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.35 }}
-              href={`https://wa.me/51994118084?text=Hola, me interesa el servicio de ${service.name}. ${service.cta}`}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 px-8 py-3 rounded-full font-bold text-foreground transition-all hover:scale-105 hover:shadow-xl"
-              style={{ backgroundColor: service.color, boxShadow: `0 6px 24px ${service.color}50` }}
-            >
-              <MessageCircle size={18} /> {service.cta}
-            </motion.a>
+            <div className="flex flex-wrap items-center gap-3">
+              <motion.a
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.35 }}
+                href={`https://wa.me/51994118084?text=Hola, me interesa el servicio de ${service.name}. ${service.cta}`}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 px-8 py-3 rounded-full font-bold text-foreground transition-all hover:scale-105 hover:shadow-xl"
+                style={{ backgroundColor: service.color, boxShadow: `0 6px 24px ${service.color}50` }}
+              >
+                <MessageCircle size={18} /> {service.cta}
+              </motion.a>
+              {service.email && (
+                <a
+                  href={`mailto:${service.email}`}
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-white/90 bg-white/5 hover:bg-white/10 border border-white/20 transition-all hover:scale-105 text-sm"
+                >
+                  <Mail size={16} style={{ color: service.color }} /> {service.email}
+                </a>
+              )}
+            </div>
           </div>
 
           {/* Stats grid 2x2 */}
@@ -1852,8 +1900,25 @@ const Footer = ({ travelTheme = false }: { travelTheme?: boolean }) => {
         </div>
       </div>
       <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4">
-        <div className="flex items-center gap-3">
+        <div className="flex flex-col sm:flex-row items-center gap-4">
           <img src="/logos/bmg_clean.png?v=5" alt="BMG" className="h-10 w-auto object-contain" />
+          <div className="flex flex-col sm:flex-row items-center gap-3 text-xs pl-0 sm:pl-3 sm:border-l sm:border-white/15">
+            <a
+              href="mailto:gestion@bmgconsultores.site"
+              className="flex items-center gap-1.5 text-white/70 hover:text-[#D6A83F] transition-colors"
+            >
+              <Mail size={13} className="text-[#D6A83F]" /> gestion@bmgconsultores.site
+            </a>
+            <span className="hidden sm:inline text-white/20">·</span>
+            <a
+              href="https://wa.me/51994118084"
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center gap-1.5 text-white/70 hover:text-[#4E9FC2] transition-colors"
+            >
+              <Phone size={13} className="text-[#4E9FC2]" /> +51 994 118 084
+            </a>
+          </div>
         </div>
         <div className="flex flex-wrap justify-center gap-4">
           {services.map((s) => (
@@ -2257,7 +2322,7 @@ const LobbyPage = ({ service }: { service: Service }) => {
       </section>
 
       {/* @section: asesor-legal */}
-      {service.advisor && <AdvisorSection advisor={service.advisor} color={GOLD_HEX} />}
+      {service.advisor && <AdvisorSection advisor={service.advisor} color={GOLD_HEX} email={service.email} />}
 
       {/* @section: faqs */}
       {service.faqs?.length > 0 && (
@@ -2288,14 +2353,24 @@ const LobbyPage = ({ service }: { service: Service }) => {
             <p className="text-muted-foreground text-base leading-relaxed mb-10">
               Diagnóstico gratuito de tu perfil como proveedor del Estado. Identificamos en qué procesos tienes mayores probabilidades de adjudicación — sin costo, sin compromiso.
             </p>
-            <a
-              href="https://wa.me/51994118084?text=Hola, quiero el diagnóstico gratuito para licitar con el Estado con BG Gestores"
-              target="_blank" rel="noreferrer"
-              className="inline-flex items-center gap-3 px-10 py-4 rounded-full font-bold text-black text-base transition-all hover:scale-105 hover:shadow-2xl"
-              style={{ backgroundColor: GOLD_HEX, boxShadow: `0 8px 32px ${GOLD_HEX}45` }}
-            >
-              <MessageCircle size={20} /> Diagnóstico gratuito →
-            </a>
+            <div className="flex flex-wrap items-center justify-center gap-4">
+              <a
+                href="https://wa.me/51994118084?text=Hola, quiero el diagnóstico gratuito para licitar con el Estado con BG Gestores"
+                target="_blank" rel="noreferrer"
+                className="inline-flex items-center gap-3 px-10 py-4 rounded-full font-bold text-black text-base transition-all hover:scale-105 hover:shadow-2xl"
+                style={{ backgroundColor: GOLD_HEX, boxShadow: `0 8px 32px ${GOLD_HEX}45` }}
+              >
+                <MessageCircle size={20} /> Diagnóstico gratuito →
+              </a>
+              {service.email && (
+                <a
+                  href={`mailto:${service.email}`}
+                  className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-bold text-white bg-white/10 hover:bg-white/20 border border-white/25 transition-all hover:scale-105 text-base"
+                >
+                  <Mail size={18} style={{ color: GOLD_HEX }} /> {service.email}
+                </a>
+              )}
+            </div>
           </motion.div>
         </div>
       </section>
@@ -2631,14 +2706,24 @@ const JuridicoPage = ({ service }: { service: Service }) => {
             <p className="text-muted-foreground text-base leading-relaxed mb-10">
               30 minutos con un abogado especializado para evaluar tu caso y trazarte el camino legal más seguro. Sin compromisos, con soluciones reales.
             </p>
-            <a
-              href="https://wa.me/51994118084?text=Hola, quiero agendar mi consulta legal gratuita con BG Jurídico"
-              target="_blank" rel="noreferrer"
-              className="inline-flex items-center gap-3 px-10 py-4 rounded-full font-bold text-black text-base transition-all hover:scale-105 hover:shadow-2xl"
-              style={{ backgroundColor: GOLD_HEX, boxShadow: `0 8px 32px ${GOLD_HEX}45` }}
-            >
-              <MessageCircle size={20} /> Agendar consulta gratis →
-            </a>
+            <div className="flex flex-wrap items-center justify-center gap-4">
+              <a
+                href="https://wa.me/51994118084?text=Hola, quiero agendar mi consulta legal gratuita con BG Jurídico"
+                target="_blank" rel="noreferrer"
+                className="inline-flex items-center gap-3 px-10 py-4 rounded-full font-bold text-black text-base transition-all hover:scale-105 hover:shadow-2xl"
+                style={{ backgroundColor: GOLD_HEX, boxShadow: `0 8px 32px ${GOLD_HEX}45` }}
+              >
+                <MessageCircle size={20} /> Agendar consulta gratis →
+              </a>
+              {service.email && (
+                <a
+                  href={`mailto:${service.email}`}
+                  className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-bold text-white bg-white/10 hover:bg-white/20 border border-white/25 transition-all hover:scale-105 text-base"
+                >
+                  <Mail size={18} style={{ color: GOLD_HEX }} /> {service.email}
+                </a>
+              )}
+            </div>
           </motion.div>
         </div>
       </section>
@@ -2851,11 +2936,21 @@ const InmobiliarioPage = ({ service }: { service: Service }) => {
             <p style={{ color:'var(--muted-foreground)', marginTop:16, lineHeight:1.7, fontSize:'0.95rem' }}>
               {service.advisor?.bio ?? "Especialista GIS y Arquitecto-Urbanista colegiado; evaluador de riesgos y desastres certificado por CENEPRED y verificador catastral. Con 13 años de experiencia en saneamiento físico legal."}
             </p>
-            <a href={`https://wa.me/51994118084?text=${encodeURIComponent(service.advisor?.whatsappMessage ?? `Hola, quiero una asesoría con el arquitecto de ${service.name}`)}`}
-              target="_blank" rel="noopener noreferrer"
-              style={{ display:'inline-flex', alignItems:'center', gap:8, background:ACCENT, color:'#fff', borderRadius:999, padding:'12px 28px', fontWeight:700, fontSize:'0.95rem', textDecoration:'none', marginTop:22 }}>
-              Escribirle por WhatsApp
-            </a>
+            <div style={{ display:'flex', flexWrap:'wrap', alignItems:'center', gap:12, marginTop:22 }}>
+              <a href={`https://wa.me/51994118084?text=${encodeURIComponent(service.advisor?.whatsappMessage ?? `Hola, quiero una asesoría con el arquitecto de ${service.name}`)}`}
+                target="_blank" rel="noopener noreferrer"
+                style={{ display:'inline-flex', alignItems:'center', gap:8, background:ACCENT, color:'#fff', borderRadius:999, padding:'12px 28px', fontWeight:700, fontSize:'0.95rem', textDecoration:'none' }}>
+                <MessageCircle size={18} /> Escribirle por WhatsApp
+              </a>
+              {service.email && (
+                <a
+                  href={`mailto:${service.email}`}
+                  style={{ display:'inline-flex', alignItems:'center', gap:8, background:'rgba(255,255,255,0.06)', color:'rgba(255,255,255,0.9)', border:'1px solid rgba(255,255,255,0.2)', borderRadius:999, padding:'12px 24px', fontWeight:600, fontSize:'0.9rem', textDecoration:'none' }}
+                >
+                  <Mail size={16} style={{ color: GOLD }} /> {service.email}
+                </a>
+              )}
+            </div>
           </motion.div>
         </div>
       </section>
@@ -2871,11 +2966,21 @@ const InmobiliarioPage = ({ service }: { service: Service }) => {
           <p style={{ color:'var(--muted-foreground)', maxWidth:480, margin:'0 auto 32px' }}>
             Nuestro equipo evalúa tu propiedad o proyecto y te orienta sobre los siguientes pasos. Primera consulta gratuita.
           </p>
-          <a href={consultationUrl}
-            target="_blank" rel="noopener noreferrer"
-            style={{ display:'inline-flex', alignItems:'center', gap:8, background:ACCENT, color:'white', borderRadius:999, padding:'16px 36px', fontWeight:700, fontSize:'1rem', textDecoration:'none' }}>
-            💬 Quiero mi consulta gratis
-          </a>
+          <div style={{ display:'flex', flexWrap:'wrap', alignItems:'center', justifyContent:'center', gap:12 }}>
+            <a href={consultationUrl}
+              target="_blank" rel="noopener noreferrer"
+              style={{ display:'inline-flex', alignItems:'center', gap:8, background:ACCENT, color:'white', borderRadius:999, padding:'16px 36px', fontWeight:700, fontSize:'1rem', textDecoration:'none' }}>
+              💬 Quiero mi consulta gratis
+            </a>
+            {service.email && (
+              <a
+                href={`mailto:${service.email}`}
+                style={{ display:'inline-flex', alignItems:'center', gap:8, background:'rgba(255,255,255,0.06)', color:'white', border:'1px solid rgba(255,255,255,0.25)', borderRadius:999, padding:'16px 28px', fontWeight:600, fontSize:'0.95rem', textDecoration:'none' }}
+              >
+                <Mail size={18} style={{ color: GOLD }} /> {service.email}
+              </a>
+            )}
+          </div>
         </motion.div>
       </section>
 
@@ -3065,11 +3170,21 @@ const SegurosPage = ({ service }: { service: Service }) => {
             <blockquote className="mt-5 italic text-muted-foreground border-l-4 pl-4" style={{ borderColor: GOLD_HEX }}>
               «Si he visto más lejos es porque me he apoyado en los hombros de gigantes»
             </blockquote>
-            <a href={waLink(service.advisor?.whatsappMessage ?? "Hola Giancarlo, quiero una asesoría de BG Seguros.")} target="_blank" rel="noreferrer"
-              className="mt-6 inline-flex items-center gap-2 px-6 py-3 rounded-full font-bold text-black transition-all hover:scale-105"
-              style={{ backgroundColor: GOLD_HEX }}>
-              <MessageCircle size={18} /> Escribirle por WhatsApp
-            </a>
+            <div className="mt-6 flex flex-wrap items-center gap-3">
+              <a href={waLink(service.advisor?.whatsappMessage ?? "Hola Giancarlo, quiero una asesoría de BG Seguros.")} target="_blank" rel="noreferrer"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-bold text-black transition-all hover:scale-105"
+                style={{ backgroundColor: GOLD_HEX }}>
+                <MessageCircle size={18} /> Escribirle por WhatsApp
+              </a>
+              {service.email && (
+                <a
+                  href={`mailto:${service.email}`}
+                  className="inline-flex items-center gap-2 px-5 py-3 rounded-full font-semibold text-white/90 bg-white/5 hover:bg-white/10 border border-white/20 transition-all hover:scale-105 text-sm"
+                >
+                  <Mail size={16} style={{ color: GOLD_HEX }} /> {service.email}
+                </a>
+              )}
+            </div>
           </div>
         </div>
       </section>
@@ -3121,11 +3236,21 @@ const SegurosPage = ({ service }: { service: Service }) => {
             Tu tranquilidad financiera <span style={{ color: GOLD_HEX }}>es nuestra prioridad</span>
           </h2>
           <p className="text-muted-foreground text-base leading-relaxed mb-10">Recibe un análisis de riesgos gratuito y una cotización con un asesor certificado.</p>
-          <a href={waLink("Hola, quiero la asesoría de BG Seguros.")} target="_blank" rel="noreferrer"
-            className="inline-flex items-center gap-3 px-8 py-4 rounded-full font-bold text-black text-base transition-all hover:scale-105"
-            style={{ backgroundColor: GOLD_HEX, boxShadow: `0 8px 32px ${GOLD_HEX}55` }}>
-            <MessageCircle size={20} /> Cotiza tu seguro gratis
-          </a>
+          <div className="flex flex-wrap items-center justify-center gap-4">
+            <a href={waLink("Hola, quiero la asesoría de BG Seguros.")} target="_blank" rel="noreferrer"
+              className="inline-flex items-center gap-3 px-8 py-4 rounded-full font-bold text-black text-base transition-all hover:scale-105"
+              style={{ backgroundColor: GOLD_HEX, boxShadow: `0 8px 32px ${GOLD_HEX}55` }}>
+              <MessageCircle size={20} /> Cotiza tu seguro gratis
+            </a>
+            {service.email && (
+              <a
+                href={`mailto:${service.email}`}
+                className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-bold text-white bg-white/10 hover:bg-white/20 border border-white/25 transition-all hover:scale-105 text-base"
+              >
+                <Mail size={18} style={{ color: GOLD_HEX }} /> {service.email}
+              </a>
+            )}
+          </div>
         </div>
       </section>
     </div>
@@ -3270,11 +3395,21 @@ const ComercioExteriorPage = ({ service }: { service: Service }) => {
           <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6 leading-tight" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
             Tu próxima operación, <span style={{ color: GOLD_HEX }}>sin riesgos aduaneros</span>
           </h2>
-          <a href={wa("Hola, quiero evaluar mi operación de comercio exterior con BMG Consultores.")} target="_blank" rel="noreferrer"
-            className="inline-flex items-center gap-3 px-8 py-4 rounded-full font-bold text-black text-base transition-all hover:scale-105"
-            style={{ backgroundColor: GOLD_HEX }}>
-            <MessageCircle size={20} /> Hablar con un especialista aduanero
-          </a>
+          <div className="flex flex-wrap items-center justify-center gap-4 mt-8">
+            <a href={wa("Hola, quiero evaluar mi operación de comercio exterior con BMG Consultores.")} target="_blank" rel="noreferrer"
+              className="inline-flex items-center gap-3 px-8 py-4 rounded-full font-bold text-black text-base transition-all hover:scale-105"
+              style={{ backgroundColor: GOLD_HEX }}>
+              <MessageCircle size={20} /> Hablar con un especialista aduanero
+            </a>
+            {service.email && (
+              <a
+                href={`mailto:${service.email}`}
+                className="inline-flex items-center gap-2 px-7 py-4 rounded-full font-bold text-white bg-white/10 hover:bg-white/20 border border-white/25 transition-all hover:scale-105 text-base"
+              >
+                <Mail size={18} style={{ color: GOLD_HEX }} /> {service.email}
+              </a>
+            )}
+          </div>
         </div>
       </section>
     </div>
